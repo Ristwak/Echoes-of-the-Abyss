@@ -307,7 +307,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -333,12 +333,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473873826}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.03298764, y: 0.030826336, z: -0.0010022395, w: -0.99897975}
-  m_LocalPosition: {x: 0.0635404, y: 0.74239635, z: -0.42838287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.73, y: 7.14, z: 16.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1573667526}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &473873831
 MonoBehaviour:
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1573667526}
-  offset: {x: 0, y: 0.57, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   smoothSpeed: 5
 --- !u!1001 &792267499
 PrefabInstance:
@@ -592,8 +592,7 @@ Transform:
   m_LocalPosition: {x: -0.73, y: 6.536639, z: 16.147146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 473873830}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1573667527
@@ -706,5 +705,6 @@ LightingSettings:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 473873830}
   - {fileID: 1440838453}
   - {fileID: 1573667526}
