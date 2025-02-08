@@ -250,7 +250,6 @@ GameObject:
   - component: {fileID: 473873828}
   - component: {fileID: 473873827}
   - component: {fileID: 473873831}
-  - component: {fileID: 473873832}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -384,21 +383,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &473873832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473873826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce5cacff70f99324a99398d3585fe727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1573667526}
-  offset: {x: 0, y: 0, z: 0}
-  smoothSpeed: 5
 --- !u!1001 &792267499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -495,7 +479,6 @@ GameObject:
   - component: {fileID: 1573667525}
   - component: {fileID: 1573667524}
   - component: {fileID: 1573667523}
-  - component: {fileID: 1573667527}
   - component: {fileID: 1573667528}
   m_Layer: 0
   m_Name: Capsule
@@ -595,21 +578,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1573667527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573667522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e388fd7b529ae3644ac0564194633a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  jumpHeight: 2
-  gravity: -9.81
 --- !u!143 &1573667528
 CharacterController:
   m_ObjectHideFlags: 0
