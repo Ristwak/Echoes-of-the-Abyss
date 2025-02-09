@@ -333,7 +333,7 @@ Transform:
   m_GameObject: {fileID: 473873826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73, y: 7.14, z: 16.19}
+  m_LocalPosition: {x: -0.73, y: 7.14, z: 12.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -479,7 +479,6 @@ GameObject:
   - component: {fileID: 1573667525}
   - component: {fileID: 1573667524}
   - component: {fileID: 1573667523}
-  - component: {fileID: 1573667528}
   - component: {fileID: 1573667529}
   - component: {fileID: 1573667530}
   - component: {fileID: 1573667531}
@@ -575,37 +574,12 @@ Transform:
   m_GameObject: {fileID: 1573667522}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73, y: 6.536639, z: 16.147146}
+  m_LocalPosition: {x: -0.73, y: 6.39, z: 16.147146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1573667528
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573667522}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1573667529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,7 +616,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1573667530}
-        m_TargetAssemblyTypeName: PlayerMovementSystem, Assembly-CSharp
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 0
         m_Arguments:
@@ -697,7 +671,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!4 &1809082235 stripped
 Transform:

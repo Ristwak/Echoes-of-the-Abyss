@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovementSystem : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     private Rigidbody jump;
 
@@ -11,7 +11,10 @@ public class PlayerMovementSystem : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump" + context.phase);
-        jump.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        if (context.performed)
+        {
+            Debug.Log("Jump");
+            jump.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        }
     }
 }
