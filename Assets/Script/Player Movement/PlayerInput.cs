@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
         playerMovement = new PlayerMovement();
         playerMovement.Movement.Enable();
         playerMovement.Movement.Jump.performed += Jump;
@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour
     private void CheckGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance);
-        
+
         // Reset jump animation if grounded
         if (isGrounded && isJumping)
         {
@@ -44,10 +44,12 @@ public class PlayerInput : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        Debug.Log("Outside If condition of Jump");
+        if (context.performed && !isGrounded)
         {
+            Debug.Log("Inside If condition of Jump");
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
-            animator.Play("Jump");  
+            animator.Play("Jump");
             isJumping = true;
         }
     }
@@ -59,7 +61,7 @@ public class PlayerInput : MonoBehaviour
         if (inputVector == Vector2.zero)
         {
             animator.Play("Idle");  // Play idle animation when no input
-            return; 
+            return;
         }
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);

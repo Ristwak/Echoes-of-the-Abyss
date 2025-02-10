@@ -582,13 +582,13 @@ PrefabInstance:
       addedObject: {fileID: 1353620355}
     - targetCorrespondingSourceObject: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1353620354}
-    - targetCorrespondingSourceObject: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1353620353}
     - targetCorrespondingSourceObject: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1353620352}
+    - targetCorrespondingSourceObject: {fileID: 3344797552917926168, guid: da1203547328fdb41974e0b5334e799a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1353620354}
   m_SourcePrefab: {fileID: 100100000, guid: da1203547328fdb41974e0b5334e799a, type: 3}
 --- !u!1 &1353620351 stripped
 GameObject:
@@ -614,10 +614,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.372262
-  m_Height: 1.8375044
+  m_Radius: 0.21608289
+  m_Height: 1.8055875
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8994541, z: -0.127738}
+  m_Center: {x: 0, y: 0.9154128, z: 0.028441112}
 --- !u!54 &1353620353
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -660,7 +660,6 @@ MonoBehaviour:
   speed: 3.87
   jumpForce: 5
   groundDistance: 0.1
-  cameraTransform: {fileID: 473873830}
 --- !u!114 &1353620355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 5c45f9ce2fcd40048945d5b5d79cf090, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -685,7 +684,43 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1353620351}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4ca7e260-5943-424d-bcae-0267a7d8189e
+    m_ActionName: 'Movement/WASD[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 082e786b-45ea-4791-a832-edcb1a3c55f4
+    m_ActionName: Movement/Touch
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1353620354}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3a5e7d94-d351-4099-a06b-ed6e88515e78
+    m_ActionName: 'Movement/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
