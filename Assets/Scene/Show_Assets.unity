@@ -396,9 +396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4a0f0dfc18abd41a1dbd3f771b3dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 892700014}
+  player: {fileID: 1409129120}
   mouseSensitivity: 100
   rotationSmoothTime: -0.18
+  cameraOffset: {x: -0.03, y: 1.98, z: -1.6}
 --- !u!1001 &792267499
 PrefabInstance:
   m_ObjectHideFlags: 0

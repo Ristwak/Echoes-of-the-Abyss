@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
         playerMovement.Movement.Enable();
         playerMovement.Movement.Jump.performed += Jump;
         playerMovement.Movement.WASD.performed += ctx => inputVector = ctx.ReadValue<Vector2>();
-        playerMovement.Movement.WASD.canceled += ctx => inputVector = Vector2.zero; // Stop movement when key is released
+        playerMovement.Movement.WASD.canceled += ctx => inputVector = Vector2.zero;
     }
 
     void Update()
