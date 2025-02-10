@@ -9,14 +9,14 @@ public class PlayerInput : MonoBehaviour
     public float jumpForce = 5f;
     public float groundDistance = 0.9f;
     private PlayerMovement playerMovement;
-    public Transform cameraTransform;
     private Animator animator;
     private Vector2 inputVector;
+    private bool isJumping = false; // Track jump animation state
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>(); // Use Animator instead of Animation
+        animator = GetComponent<Animator>(); 
         playerMovement = new PlayerMovement();
         playerMovement.Movement.Enable();
         playerMovement.Movement.Jump.performed += Jump;
@@ -28,32 +28,45 @@ public class PlayerInput : MonoBehaviour
     {
         CheckGrounded();
         MovePlayer();
-        UpdateAnimation();
     }
 
     private void CheckGrounded()
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance);
+        
+        // Reset jump animation if grounded
+        if (isGrounded && isJumping)
+        {
+            animator.Play("Idle"); // Reset to idle or walking based on movement
+            isJumping = false;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded)
         {
-            Debug.Log("Jump");
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            animator.Play("Jump");  
+            isJumping = true;
         }
     }
 
     private void MovePlayer()
     {
-        if (inputVector == Vector2.zero) return; // No movement input
+        if (isJumping) return; // Don't override jump animation
+
+        if (inputVector == Vector2.zero)
+        {
+            animator.Play("Idle");  // Play idle animation when no input
+            return; 
+        }
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
 
         // Convert movement direction relative to camera
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
 
         forward.y = 0;
         right.y = 0;
@@ -63,11 +76,7 @@ public class PlayerInput : MonoBehaviour
 
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * speed, rb.linearVelocity.y, desiredMoveDirection.z * speed);
-    }
 
-    private void UpdateAnimation()
-    {
-        bool isWalking = inputVector.magnitude > 0.1f;
-        animator.SetBool("IsWalking", isWalking);
+        animator.Play("Walking"); // Keep walking animation looping
     }
 }
