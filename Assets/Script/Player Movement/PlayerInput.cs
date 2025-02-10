@@ -4,9 +4,10 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     private Rigidbody rb;
-    private float speed = 5f;
+    public float speed = 5f;
     private bool isGrounded;
-    private float jumpForce = 5f;
+    public float jumpForce = 5f;
+    public float groundDistance = 0.9f;
     private PlayerMovement playerMovement;
     public Transform cameraTransform;
     
@@ -31,7 +32,7 @@ public class PlayerInput : MonoBehaviour
     private void CheckGrounded()
     {
         RaycastHit hit;
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.1f);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, groundDistance);
     }
 
     public void Jump(InputAction.CallbackContext context)
