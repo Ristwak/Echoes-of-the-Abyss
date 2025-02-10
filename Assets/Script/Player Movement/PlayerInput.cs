@@ -10,12 +10,13 @@ public class PlayerInput : MonoBehaviour
     public float groundDistance = 0.9f;
     private PlayerMovement playerMovement;
     public Transform cameraTransform;
-    
+    private Animator animator;
     private Vector2 inputVector;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>(); // Use Animator instead of Animation
         playerMovement = new PlayerMovement();
         playerMovement.Movement.Enable();
         playerMovement.Movement.Jump.performed += Jump;
@@ -27,12 +28,12 @@ public class PlayerInput : MonoBehaviour
     {
         CheckGrounded();
         MovePlayer();
+        UpdateAnimation();
     }
 
     private void CheckGrounded()
     {
-        RaycastHit hit;
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, groundDistance);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance);
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -62,5 +63,11 @@ public class PlayerInput : MonoBehaviour
 
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * speed, rb.linearVelocity.y, desiredMoveDirection.z * speed);
+    }
+
+    private void UpdateAnimation()
+    {
+        bool isWalking = inputVector.magnitude > 0.1f;
+        animator.SetBool("IsWalking", isWalking);
     }
 }
