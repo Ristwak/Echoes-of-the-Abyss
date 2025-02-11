@@ -29,10 +29,6 @@ public class CameraControl : MonoBehaviour
         transform.rotation = targetRotation;
         player.rotation = Quaternion.Euler(0f, yRotation, 0f);  // Player rotates with camera
 
-        // Add slight tilt to camera when moving left/right
-        float tilt = Input.GetAxis("Horizontal") * cameraTiltAmount;
-        transform.rotation *= Quaternion.Euler(0, 0, -tilt); // Tilts the camera left/right
-
         // Smoothly move camera to follow the player with an offset
         Vector3 targetPosition = player.position + player.TransformDirection(cameraOffset);
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, rotationSmoothTime);

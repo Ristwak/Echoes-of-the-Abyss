@@ -5,6 +5,8 @@ public class PlayerInput : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed = 5f;
+    public float sideMovementSpeed = 0.6f;
+    public float backMovementSpeed = 0.5f;
     private bool isGrounded;
     public float jumpForce = 5f;
     public float groundDistance = 0.9f;
@@ -32,31 +34,35 @@ public class PlayerInput : MonoBehaviour
 
     private void CheckGrounded()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance);
+        // Using a raycast slightly below the player
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance + 0.1f);
 
         // Reset jump animation if grounded
         if (isGrounded && isJumping)
         {
-            animator.Play("Idle"); // Reset to idle or walking based on movement
+            animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
             isJumping = false;
         }
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Outside If condition of Jump");
-        if (context.performed && !isGrounded)
+        Debug.Log("Jump Button Pressed");
+        Debug.Log("isGrounded: " + isGrounded);
+
+        if (context.performed && isGrounded) // Fix: Allow jumping only when grounded
         {
-            Debug.Log("Inside If condition of Jump");
+            Debug.Log("Jump Executed");
+            // animator.Play("Jump");
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
-            animator.Play("Jump");
             isJumping = true;
+            isGrounded = false; // Prevent double jumping
         }
     }
 
     private void MovePlayer()
     {
-        if (isJumping) return; // Don't override jump animation
+        if (isJumping) return; // Prevent movement while jumping
 
         if (inputVector == Vector2.zero)
         {
@@ -77,8 +83,48 @@ public class PlayerInput : MonoBehaviour
         right.Normalize();
 
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
-        rb.linearVelocity = new Vector3(desiredMoveDirection.x * speed, rb.linearVelocity.y, desiredMoveDirection.z * speed);
 
-        animator.Play("Walking"); // Keep walking animation looping
+        // Adjust speed based on direction
+        float moveSpeed = speed;
+
+        if (inputVector.y < 0) // Moving Backward (S)
+        {
+            moveSpeed = backMovementSpeed; // Reduce speed to 50%
+            animator.Play("Walking Backwards");
+        }
+        else if (inputVector.x < 0) // Right (D)
+        {
+            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
+            Debug.Log("Moving Right");
+            animator.Play("Right Walk");
+        }
+        else if (inputVector.x > 0) // Moving Left (A)
+        {
+            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
+            Debug.Log("Moving Left");
+            animator.Play("Left Walk");
+        }
+        else // Moving Forward (W)
+        {
+            animator.Play("Walking");
+        }
+
+        rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs"))
+        {
+            isGrounded = false;
+        }
     }
 }
