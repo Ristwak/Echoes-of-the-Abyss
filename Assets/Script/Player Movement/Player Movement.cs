@@ -53,6 +53,15 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c19491b-f96b-4f1a-b81e-1913323f4309"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
                     ""action"": ""WASD"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbb3f0ab-282e-4f10-84bb-fee42a86e06f"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         m_Movement_WASD = m_Movement.FindAction("WASD", throwIfNotFound: true);
         m_Movement_Touch = m_Movement.FindAction("Touch", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        m_Movement_Crouch = m_Movement.FindAction("Crouch", throwIfNotFound: true);
     }
 
     ~@PlayerMovement()
@@ -212,6 +233,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_WASD;
     private readonly InputAction m_Movement_Touch;
     private readonly InputAction m_Movement_Jump;
+    private readonly InputAction m_Movement_Crouch;
     public struct MovementActions
     {
         private @PlayerMovement m_Wrapper;
@@ -219,6 +241,7 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         public InputAction @WASD => m_Wrapper.m_Movement_WASD;
         public InputAction @Touch => m_Wrapper.m_Movement_Touch;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
+        public InputAction @Crouch => m_Wrapper.m_Movement_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +260,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -250,6 +276,9 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -272,5 +301,6 @@ public partial class @PlayerMovement: IInputActionCollection2, IDisposable
         void OnWASD(InputAction.CallbackContext context);
         void OnTouch(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
 }

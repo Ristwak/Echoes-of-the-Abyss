@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     public float sideMovementSpeed = 0.6f;
     public float backMovementSpeed = 0.5f;
     private bool isGrounded;
+    private bool isCrouched;
     public float jumpForce = 5f;
     public float groundDistance = 0.9f;
     private PlayerMovement playerMovement;
@@ -22,8 +23,10 @@ public class PlayerInput : MonoBehaviour
         playerMovement = new PlayerMovement();
         playerMovement.Movement.Enable();
         playerMovement.Movement.Jump.performed += Jump;
+        playerMovement.Movement.Crouch.performed += Crouch;
         playerMovement.Movement.WASD.performed += ctx => inputVector = ctx.ReadValue<Vector2>();
         playerMovement.Movement.WASD.canceled += ctx => inputVector = Vector2.zero;
+        isCrouched = false;
     }
 
     void Update()
@@ -57,6 +60,17 @@ public class PlayerInput : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
             isJumping = true;
             isGrounded = false; // Prevent double jumping
+        }
+    }
+
+    public void Crouch(InputAction.CallbackContext context)
+    {
+        Debug.Log("Crouch is pressed");
+        animator.Play("Crouching");
+        isCrouched = true;
+        if (isCrouched)
+        {
+            // 
         }
     }
 
@@ -107,6 +121,58 @@ public class PlayerInput : MonoBehaviour
         else // Moving Forward (W)
         {
             animator.Play("Walking");
+        }
+
+        rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
+    }
+
+    private void crouchMoving()
+    {
+        if (isJumping) return; // Prevent movement while jumping
+
+        if (inputVector == Vector2.zero)
+        {
+            animator.Play("Idle Crouching");  // Play idle animation when no input
+            return;
+        }
+
+        Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
+
+        // Convert movement direction relative to camera
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
+
+        // Adjust speed based on direction
+        float moveSpeed = speed;
+
+        if (inputVector.y < 0) // Moving Backward (S)
+        {
+            moveSpeed = backMovementSpeed; // Reduce speed to 50%
+            // animator.Play("Walking Backwards");
+        }
+        else if (inputVector.x < 0) // Right (D)
+        {
+            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
+            Debug.Log("Moving Right");
+            // animator.Play("Right Walk");
+        }
+        else if (inputVector.x > 0) // Moving Left (A)
+        {
+            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
+            Debug.Log("Moving Left");
+            // animator.Play("Left Walk");
+        }
+        else // Moving Forward (W)
+        {
+            animator.Play("Crouched Run");
         }
 
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
