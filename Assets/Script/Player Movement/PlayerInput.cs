@@ -160,7 +160,7 @@ public class PlayerInput : MonoBehaviour
         }
         else
         {
-            animator.Play("Crouched Walking Forward");
+            animator.Play("Crouched Walking Backwards");
         }
 
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
