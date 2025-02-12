@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     public float speed = 5f;
     public float sideMovementSpeed = 0.6f;
     public float backMovementSpeed = 0.5f;
+    public float crouchedMovementSpeed = 0.5f;
     private bool isGrounded;
     private bool isCrouched;
     public float jumpForce = 5f;
@@ -22,25 +23,31 @@ public class PlayerInput : MonoBehaviour
         animator = GetComponent<Animator>();
         playerMovement = new PlayerMovement();
         playerMovement.Movement.Enable();
+
         playerMovement.Movement.Jump.performed += Jump;
-        playerMovement.Movement.Crouch.performed += Crouch;
+        playerMovement.Movement.Crouch.started += StartCrouch;
+        playerMovement.Movement.Crouch.canceled += StopCrouch;
+
+        playerMovement.Movement.WASD.started += ctx => inputVector = ctx.ReadValue<Vector2>();
         playerMovement.Movement.WASD.performed += ctx => inputVector = ctx.ReadValue<Vector2>();
         playerMovement.Movement.WASD.canceled += ctx => inputVector = Vector2.zero;
+
         isCrouched = false;
     }
 
     void Update()
     {
         CheckGrounded();
-        MovePlayer();
+        if (isCrouched)
+            CrouchMoving();
+        else
+            MovePlayer();
     }
 
     private void CheckGrounded()
     {
-        // Using a raycast slightly below the player
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance + 0.1f);
 
-        // Reset jump animation if grounded
         if (isGrounded && isJumping)
         {
             animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
@@ -50,75 +57,54 @@ public class PlayerInput : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump Button Pressed");
-        Debug.Log("isGrounded: " + isGrounded);
-
-        if (context.performed && isGrounded) // Fix: Allow jumping only when grounded
+        if (context.performed && isGrounded && !isCrouched)
         {
-            Debug.Log("Jump Executed");
-            // animator.Play("Jump");
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            animator.Play("Jump");
             isJumping = true;
-            isGrounded = false; // Prevent double jumping
-        }
-    }
-
-    public void Crouch(InputAction.CallbackContext context)
-    {
-        Debug.Log("Crouch is pressed");
-        animator.Play("Crouching");
-        isCrouched = true;
-        if (isCrouched)
-        {
-            // 
+            isGrounded = false;
         }
     }
 
     private void MovePlayer()
     {
-        if (isJumping) return; // Prevent movement while jumping
+        if (isJumping) return;
 
         if (inputVector == Vector2.zero)
         {
-            animator.Play("Idle");  // Play idle animation when no input
+            animator.Play("Idle");
             return;
         }
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
-
-        // Convert movement direction relative to camera
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
 
         forward.y = 0;
         right.y = 0;
-
         forward.Normalize();
         right.Normalize();
 
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
 
-        // Adjust speed based on direction
         float moveSpeed = speed;
 
-        if (inputVector.y < 0) // Moving Backward (S)
+        if (inputVector.y < 0)
         {
-            moveSpeed = backMovementSpeed; // Reduce speed to 50%
+            moveSpeed = backMovementSpeed;
             animator.Play("Walking Backwards");
         }
-        else if (inputVector.x < 0) // Right (D)
+        else if (inputVector.x < 0)
         {
-            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
-            Debug.Log("Moving Right");
+            moveSpeed = sideMovementSpeed;
             animator.Play("Right Walk");
         }
-        else if (inputVector.x > 0) // Moving Left (A)
+        else if (inputVector.x > 0)
         {
-            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
-            Debug.Log("Moving Left");
+            moveSpeed = sideMovementSpeed;
             animator.Play("Left Walk");
         }
-        else // Moving Forward (W)
+        else
         {
             animator.Play("Walking");
         }
@@ -126,57 +112,60 @@ public class PlayerInput : MonoBehaviour
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
     }
 
-    private void crouchMoving()
+    private void StartCrouch(InputAction.CallbackContext context)
     {
-        if (isJumping) return; // Prevent movement while jumping
+        isCrouched = true;
+    }
+
+    private void StopCrouch(InputAction.CallbackContext context)
+    {
+        isCrouched = false;
+        animator.Play("Idle");
+    }
+
+    private void CrouchMoving()
+    {
+        if (isJumping) return;
 
         if (inputVector == Vector2.zero)
         {
-            animator.Play("Idle Crouching");  // Play idle animation when no input
+            animator.Play("Idle Crouching");
             return;
         }
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
-
-        // Convert movement direction relative to camera
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
 
         forward.y = 0;
         right.y = 0;
-
         forward.Normalize();
         right.Normalize();
 
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
+        float moveSpeed = crouchedMovementSpeed;
 
-        // Adjust speed based on direction
-        float moveSpeed = speed;
-
-        if (inputVector.y < 0) // Moving Backward (S)
+        // Set animation based on movement direction
+        if (inputVector.y < 0)
         {
-            moveSpeed = backMovementSpeed; // Reduce speed to 50%
-            // animator.Play("Walking Backwards");
+            animator.Play("Crouched Walking Backwards");
         }
-        else if (inputVector.x < 0) // Right (D)
+        else if (inputVector.x > 0)
         {
-            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
-            Debug.Log("Moving Right");
-            // animator.Play("Right Walk");
+            animator.Play("Crouched Walking Right");
         }
-        else if (inputVector.x > 0) // Moving Left (A)
+        else if (inputVector.x < 0)
         {
-            moveSpeed = sideMovementSpeed; // Reduce speed to 70%
-            Debug.Log("Moving Left");
-            // animator.Play("Left Walk");
+            animator.Play("Crouched Walking Left");
         }
-        else // Moving Forward (W)
+        else
         {
-            animator.Play("Crouched Run");
+            animator.Play("Crouched Walking Forward");
         }
 
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
     }
+
 
     private void OnCollisionStay(Collision collision)
     {
