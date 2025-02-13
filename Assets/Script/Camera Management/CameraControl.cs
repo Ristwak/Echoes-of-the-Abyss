@@ -5,32 +5,58 @@ public class CameraControl : MonoBehaviour
     public Transform player;
     public float mouseSensitivity = 100f;
     public float rotationSmoothTime = 0.05f;
-    public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f); // Camera follows behind
-    public float cameraTiltAmount = 5f; // Adjusts how much the camera tilts
-    public float fixedXRotation = 10f; // Fixed vertical angle of the camera
+    public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f);
+    public float crouchOffsetY = 0.6f; // Camera moves down when crouching
+    public float crouchOffsetX = 0.6f; // Camera moves forward when crouching
+    public float maxLookUpAngle = 60f;
+    public float maxLookDownAngle = -45f;
 
+    private float xRotation = 0f;
     private float yRotation = 0f;
     private Vector3 currentVelocity = Vector3.zero;
+    private PlayerInput playerInput;
+    private float targetCameraHeight;
+    private float targetCameraXOffset;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        playerInput = player.GetComponent<PlayerInput>();
+        targetCameraHeight = cameraOffset.y; // Default height
+        targetCameraXOffset = cameraOffset.x; // Default X offset
     }
 
     void LateUpdate()
     {
-        // Get mouse input for horizontal rotation only
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
         yRotation += mouseX;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, maxLookDownAngle, maxLookUpAngle);
 
-        // Apply fixed vertical angle and allow horizontal rotation
-        Quaternion targetRotation = Quaternion.Euler(fixedXRotation, yRotation, 0f);
+        Quaternion targetRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         transform.rotation = targetRotation;
-        player.rotation = Quaternion.Euler(0f, yRotation, 0f);  // Player rotates with camera
+        player.rotation = Quaternion.Euler(0f, yRotation, 0f);
 
-        // Smoothly move camera to follow the player with an offset
-        Vector3 targetPosition = player.position + player.TransformDirection(cameraOffset);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, rotationSmoothTime);
+        AdjustCameraForCrouch();
+
+        Vector3 targetPosition = player.position + player.TransformDirection(new Vector3(targetCameraXOffset, targetCameraHeight, cameraOffset.z));
+        transform.position = targetPosition;
+    }
+
+    private void AdjustCameraForCrouch()
+    {
+        if (playerInput.IsCrouching)
+        {
+            targetCameraHeight = cameraOffset.y - crouchOffsetY;
+            targetCameraXOffset = cameraOffset.x + crouchOffsetX;
+        }
+        else
+        {
+            targetCameraHeight = cameraOffset.y;
+            targetCameraXOffset = cameraOffset.x;
+        }
     }
 }

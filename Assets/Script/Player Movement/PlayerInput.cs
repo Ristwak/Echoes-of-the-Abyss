@@ -15,7 +15,9 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator animator;
     private Vector2 inputVector;
-    private bool isJumping = false; // Track jump animation state
+    private bool isJumping = false;
+    public bool IsCrouching { get; private set; } = false;
+
 
     void Awake()
     {
@@ -115,11 +117,13 @@ public class PlayerInput : MonoBehaviour
     private void StartCrouch(InputAction.CallbackContext context)
     {
         isCrouched = true;
+        IsCrouching = true;
     }
 
     private void StopCrouch(InputAction.CallbackContext context)
     {
         isCrouched = false;
+        IsCrouching = false;
         animator.Play("Idle");
     }
 
@@ -145,7 +149,6 @@ public class PlayerInput : MonoBehaviour
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
         float moveSpeed = crouchedMovementSpeed;
 
-        // Set animation based on movement direction
         if (inputVector.y < 0)
         {
             animator.Play("Crouched Walking Backwards");
@@ -160,12 +163,11 @@ public class PlayerInput : MonoBehaviour
         }
         else
         {
-            animator.Play("Crouched Walking Backwards");
+            animator.Play("Crouched Walking");
         }
 
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
     }
-
 
     private void OnCollisionStay(Collision collision)
     {
