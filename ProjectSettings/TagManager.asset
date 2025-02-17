@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Stairs
+  - UnlockPoint
   layers:
   - Default
   - TransparentFX

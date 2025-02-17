@@ -1,72 +1,74 @@
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private Rigidbody rb;
+    [Header("Variables")]
     public float speed = 5f;
     public float sideMovementSpeed = 0.6f;
     public float backMovementSpeed = 0.5f;
     public float crouchedMovementSpeed = 0.5f;
-    private bool isGrounded;
-    private bool isCrouched;
     public float jumpForce = 5f;
     public float groundDistance = 0.9f;
-    private PlayerMovement playerMovement;
+    public bool IsCrouching { get; private set; } = false;
+    public GameObject playerHead;
+
+    private Rigidbody rb;
+    private bool isCrouched;
+    private bool isGrounded;
     private Animator animator;
     private Vector2 inputVector;
     private bool isJumping = false;
-    public bool IsCrouching { get; private set; } = false;
-
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        playerMovement = new PlayerMovement();
-        playerMovement.Movement.Enable();
-
-        playerMovement.Movement.Jump.performed += Jump;
-        playerMovement.Movement.Crouch.started += StartCrouch;
-        playerMovement.Movement.Crouch.canceled += StopCrouch;
-
-        playerMovement.Movement.WASD.started += ctx => inputVector = ctx.ReadValue<Vector2>();
-        playerMovement.Movement.WASD.performed += ctx => inputVector = ctx.ReadValue<Vector2>();
-        playerMovement.Movement.WASD.canceled += ctx => inputVector = Vector2.zero;
-
         isCrouched = false;
+        playerHead.active = false;
     }
 
     void Update()
     {
         CheckGrounded();
+        HandleInput();
         if (isCrouched)
             CrouchMoving();
         else
             MovePlayer();
     }
 
-    private void CheckGrounded()
+    private void HandleInput()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance + 0.1f);
+        // Capture movement input
+        inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        if (isGrounded && isJumping)
+        // Jump input
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isCrouched)
         {
-            animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
-            isJumping = false;
+            Debug.Log("Jumping");
+            Jump();
+        }
+
+        // Crouch input
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouched)
+        {
+            StartCrouch();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            StopCrouch();
         }
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    private void Jump()
     {
-        if (context.performed && isGrounded && !isCrouched)
-        {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
-            animator.Play("Jump");
-            isJumping = true;
-            isGrounded = false;
-        }
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z); // Correct property
+        animator.Play("Jump");
+        isJumping = true;
+        isGrounded = false;
     }
+
 
     private void MovePlayer()
     {
@@ -75,6 +77,7 @@ public class PlayerInput : MonoBehaviour
         if (inputVector == Vector2.zero)
         {
             animator.Play("Idle");
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0); // Stops gliding
             return;
         }
 
@@ -111,16 +114,18 @@ public class PlayerInput : MonoBehaviour
             animator.Play("Walking");
         }
 
-        rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
+        Vector3 targetVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 10f); // Smooth stop/start
     }
 
-    private void StartCrouch(InputAction.CallbackContext context)
+    private void StartCrouch()
     {
         isCrouched = true;
         IsCrouching = true;
+        animator.Play("Crouch");
     }
 
-    private void StopCrouch(InputAction.CallbackContext context)
+    private void StopCrouch()
     {
         isCrouched = false;
         IsCrouching = false;
@@ -167,6 +172,16 @@ public class PlayerInput : MonoBehaviour
         }
 
         rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
+    }
+
+    private void CheckGrounded()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance + 0.1f);
+        if (isGrounded && isJumping)
+        {
+            animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
+            isJumping = false;
+        }
     }
 
     private void OnCollisionStay(Collision collision)
