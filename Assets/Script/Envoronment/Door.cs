@@ -13,8 +13,8 @@ public class Door : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.Play("DoorOpening");
-            Debug.Log("Door animation triggered via Animator!");
+            animator.SetTrigger("DoorOpening");
+            Debug.Log("Playing DoorOpening");
         }
         else
         {

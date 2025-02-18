@@ -5,7 +5,6 @@ public class PlayerInteractions : MonoBehaviour
     [Header("Variables")]
     public float frontDistance = 2.0f;
     public Transform raycastOrigin;
-    public bool openingDoor;
     public Door door;
 
     private Rigidbody rb;
@@ -18,54 +17,43 @@ public class PlayerInteractions : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        openingDoor = false;
     }
 
     void Update()
     {
         CheckFront();
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            OpenDoor();
-            openingDoor = true;
-        }
+        OpenDoor();
     }
 
     void OpenDoor()
     {
-        Debug.Log("Into OpenDoor Function");
-
-        if (keyPickup.havekey && frontline)
+        // Debug.Log("Into OpenDoor Function");
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            RaycastHit hit;
-            Vector3 rayOrigin = raycastOrigin != null ? raycastOrigin.position : transform.position + Vector3.up * 1.5f;
-
-            if (Physics.Raycast(rayOrigin, transform.forward, out hit, frontDistance))
+            if (keyPickup.havekey && frontline)
             {
-                Debug.Log("Into OpenDoor's Keypickup Function");
+                RaycastHit hit;
+                Vector3 rayOrigin = raycastOrigin != null ? raycastOrigin.position : transform.position + Vector3.up * 1.5f;
 
-                if (hit.collider.CompareTag("Door"))
+                if (Physics.Raycast(rayOrigin, transform.forward, out hit, frontDistance))
                 {
-                    Debug.Log("Door detected: " + hit.collider.gameObject.name);
+                    Debug.Log("Into OpenDoor's Keypickup Function");
 
-                    // ✅ Assign the door reference dynamically
-                    door = hit.collider.GetComponent<Door>();
-
-                    if (door != null)
+                    if (hit.collider.CompareTag("Door"))
                     {
+                        Debug.Log("Door detected: " + hit.collider.gameObject.name);
+
+                        animator.Play("Opening Door Inwards");
+                        Debug.Log("Playing Opening Door Inwards");
                         door.doorOpening(); // ✅ Play animation from the Door script
                         Debug.Log("Door animation triggered!");
                     }
-                    else
-                    {
-                        Debug.LogError("Door script not found on the hit object!");
-                    }
                 }
             }
-        }
-        else
-        {
-            Debug.Log("Conditions not met: Have key? " + keyPickup?.havekey + " | Frontline? " + frontline);
+            else
+            {
+                Debug.Log("Conditions not met: Have key? " + keyPickup?.havekey + " | Frontline? " + frontline);
+            }
         }
     }
 

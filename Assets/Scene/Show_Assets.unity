@@ -32653,8 +32653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontDistance: 0.35
   raycastOrigin: {fileID: 473873830}
-  openingDoor: 0
-  door: {fileID: 0}
+  door: {fileID: 64479402179866191}
   keyPickup: {fileID: 1342380481}
 --- !u!1 &8377726449061900829
 GameObject:

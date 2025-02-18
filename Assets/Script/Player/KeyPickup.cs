@@ -33,7 +33,6 @@ public class KeyPickup : MonoBehaviour
     void PickupKey()
     {
         Debug.Log("Key Picked Up!");
-        // Destroy(gameObject); // Remove key from scene
         gameObject.active = false;
         playerKey.gameObject.active = true;
         havekey = true;
