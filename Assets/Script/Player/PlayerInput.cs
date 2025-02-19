@@ -10,9 +10,11 @@ public class PlayerInput : MonoBehaviour
     public float crouchedMovementSpeed = 0.5f;
     public float jumpForce = 5f;
     public float groundDistance = 0.9f;
+    public float stepHeight = 0.3f;  // Maximum height the player can step up
+    public float stepSmooth = 0.2f;  // Speed of smooth stepping
     public bool IsCrouching { get; private set; } = false;
     public GameObject playerHead;
-    
+
     private Rigidbody rb;
     private bool isCrouched;
     private bool isGrounded;
@@ -25,7 +27,7 @@ public class PlayerInput : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         isCrouched = false;
-        playerHead.active = false;
+        playerHead.SetActive(false);
     }
 
     void Update()
@@ -40,17 +42,13 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleInput()
     {
-        // Capture movement input
         inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        // Jump input
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isCrouched)
         {
-            Debug.Log("Jumping");
             Jump();
         }
 
-        // Crouch input
         if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouched)
         {
             StartCrouch();
@@ -68,7 +66,6 @@ public class PlayerInput : MonoBehaviour
         isGrounded = false;
     }
 
-
     private void MovePlayer()
     {
         if (isJumping) return;
@@ -76,7 +73,7 @@ public class PlayerInput : MonoBehaviour
         if (inputVector == Vector2.zero)
         {
             animator.Play("Idle");
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0); // Stops gliding
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
             return;
         }
 
@@ -113,8 +110,12 @@ public class PlayerInput : MonoBehaviour
             animator.Play("Walking");
         }
 
+        // Apply movement
         Vector3 targetVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 10f); // Smooth stop/start
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 10f);
+
+        // Check for stairs and adjust position
+        DetectStairs();
     }
 
     private void StartCrouch()
@@ -181,6 +182,25 @@ public class PlayerInput : MonoBehaviour
             animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
             isJumping = false;
         }
+    }
+
+    private void DetectStairs()
+    {
+        // Raycast slightly ahead and downward to detect stairs
+        RaycastHit hit;
+        Vector3 rayStart = transform.position + Vector3.up * 0.1f; // Slightly above the ground
+        Vector3 rayDirection = transform.forward * 0.5f + Vector3.down; // Forward and downward
+
+        if (Physics.Raycast(rayStart, rayDirection, out hit, 0.5f))
+        {
+            if (hit.collider.CompareTag("Stairs"))
+            {
+                Vector3 stepUpPosition = transform.position + Vector3.up * stepHeight;
+                transform.position = Vector3.Lerp(transform.position, stepUpPosition, stepSmooth);
+            }
+        }
+
+        Debug.DrawRay(rayStart, rayDirection * 0.5f, Color.blue); // Debug visualization
     }
 
     private void OnCollisionStay(Collision collision)

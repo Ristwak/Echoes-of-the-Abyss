@@ -32,9 +32,8 @@ public class KeyPickup : MonoBehaviour
 
     void PickupKey()
     {
-        Debug.Log("Key Picked Up!");
-        gameObject.active = false;
-        playerKey.gameObject.active = true;
+        gameObject.SetActive(false);
+        playerKey.gameObject.SetActive(true);
         havekey = true;
     }
 }

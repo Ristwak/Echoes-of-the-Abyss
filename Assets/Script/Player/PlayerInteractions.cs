@@ -27,7 +27,6 @@ public class PlayerInteractions : MonoBehaviour
 
     void OpenDoor()
     {
-        // Debug.Log("Into OpenDoor Function");
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (keyPickup.havekey && frontline)
@@ -37,22 +36,11 @@ public class PlayerInteractions : MonoBehaviour
 
                 if (Physics.Raycast(rayOrigin, transform.forward, out hit, frontDistance))
                 {
-                    Debug.Log("Into OpenDoor's Keypickup Function");
-
                     if (hit.collider.CompareTag("Door"))
                     {
-                        Debug.Log("Door detected: " + hit.collider.gameObject.name);
-
-                        animator.Play("Opening Door Inwards");
-                        Debug.Log("Playing Opening Door Inwards");
-                        door.doorOpening(); // ✅ Play animation from the Door script
-                        Debug.Log("Door animation triggered!");
+                        door.doorHandler();
                     }
                 }
-            }
-            else
-            {
-                Debug.Log("Conditions not met: Have key? " + keyPickup?.havekey + " | Frontline? " + frontline);
             }
         }
     }
@@ -62,11 +50,10 @@ public class PlayerInteractions : MonoBehaviour
     void CheckFront()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = raycastOrigin != null ? raycastOrigin.position : transform.position + Vector3.up * 1.5f; // ✅ Use mid-level
+        Vector3 rayOrigin = raycastOrigin != null ? raycastOrigin.position : transform.position + Vector3.up * 1.5f;
 
         frontline = Physics.Raycast(rayOrigin, transform.forward, out hit, frontDistance);
 
-        // Debugging visualization
         Debug.DrawRay(rayOrigin, transform.forward * frontDistance, frontline ? Color.green : Color.red);
     }
 }

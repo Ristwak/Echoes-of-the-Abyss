@@ -3,22 +3,25 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Animator animator;
+    private bool isDoorOpen;
 
     void Awake()
     {
         animator = GetComponent<Animator>(); // Ensure the door has an Animator
+        isDoorOpen = false;
     }
 
-    public void doorOpening()
+    public void doorHandler()
     {
-        if (animator != null)
+        if (animator != null && !isDoorOpen)
         {
-            animator.SetTrigger("DoorOpening");
+            animator.Play("DoorOpening");
             Debug.Log("Playing DoorOpening");
+            isDoorOpen = true;
         }
         else
         {
-            Debug.LogError("Animator not found on door!");
+            animator.Play("DoorClosing");
         }
     }
 }
