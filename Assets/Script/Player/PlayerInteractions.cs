@@ -5,7 +5,7 @@ public class PlayerInteractions : MonoBehaviour
     [Header("Variables")]
     public float frontDistance = 2.0f;
     public Transform raycastOrigin;
-    public Door door;
+    private Door door;
 
     private Rigidbody rb;
     private Animator animator;
@@ -36,6 +36,7 @@ public class PlayerInteractions : MonoBehaviour
 
                 if (Physics.Raycast(rayOrigin, transform.forward, out hit, frontDistance))
                 {
+                    door = hit.transform.gameObject.GetComponent<Door>();
                     if (hit.collider.CompareTag("Door"))
                     {
                         door.doorHandler();

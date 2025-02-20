@@ -22,6 +22,7 @@ public class Door : MonoBehaviour
         else
         {
             animator.Play("DoorClosing");
+            isDoorOpen = false;
         }
     }
 }
