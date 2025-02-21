@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
 
     void Awake()
     {
-        animator = GetComponent<Animator>(); // Ensure the door has an Animator
+        animator = GetComponent<Animator>();
         isDoorOpen = false;
     }
 
@@ -25,4 +25,5 @@ public class Door : MonoBehaviour
             isDoorOpen = false;
         }
     }
+
 }
