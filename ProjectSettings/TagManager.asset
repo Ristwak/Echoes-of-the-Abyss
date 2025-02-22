@@ -8,6 +8,8 @@ TagManager:
   - Stairs
   - Knob
   - Door
+  - Door1
+  - Key1
   layers:
   - Default
   - TransparentFX

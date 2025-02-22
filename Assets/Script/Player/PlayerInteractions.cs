@@ -37,7 +37,7 @@ public class PlayerInteractions : MonoBehaviour
                 if (Physics.Raycast(rayOrigin, transform.forward, out hit, frontDistance))
                 {
                     door = hit.transform.gameObject.GetComponent<Door>();
-                    if (hit.collider.CompareTag("Door"))
+                    if (hit.collider.CompareTag("Door1")  && keyPickup.CompareTag("Key1"))
                     {
                         door.doorHandler();
                     }
