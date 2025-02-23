@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -10,10 +10,12 @@ public class PlayerInput : MonoBehaviour
     public float crouchedMovementSpeed = 0.5f;
     public float jumpForce = 5f;
     public float groundDistance = 0.9f;
-    public float stepHeight = 0.3f;  // Maximum height the player can step up
-    public float stepSmooth = 0.2f;  // Speed of smooth stepping
+    public float stepHeight = 0.3f;
+    public float stepSmooth = 0.2f;
     public bool IsCrouching { get; private set; } = false;
     public GameObject playerHead;
+    public Camera headcamera;
+    public Camera mainCamera;
 
     private Rigidbody rb;
     private bool isCrouched;
@@ -21,17 +23,35 @@ public class PlayerInput : MonoBehaviour
     private Animator animator;
     private Vector2 inputVector;
     private bool isJumping = false;
+    private bool canMove = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         isCrouched = false;
+        mainCamera.gameObject.SetActive(false);
+    }
+
+    void Start()
+    {
+        StartCoroutine(InitialAnimationDelay());
+    }
+
+    private IEnumerator InitialAnimationDelay()
+    {
+        animator.Play("Getting Up");
+        yield return new WaitForSeconds(8f);
         playerHead.SetActive(false);
+        canMove = true;
+        Destroy(headcamera);
+        mainCamera.gameObject.SetActive(true);
     }
 
     void Update()
     {
+        if (!canMove) return;  // Block input during the initial delay
+
         CheckGrounded();
         HandleInput();
         if (isCrouched)
@@ -110,11 +130,9 @@ public class PlayerInput : MonoBehaviour
             animator.Play("Walking");
         }
 
-        // Apply movement
         Vector3 targetVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
         rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 10f);
 
-        // Check for stairs and adjust position
         DetectStairs();
     }
 
@@ -186,10 +204,9 @@ public class PlayerInput : MonoBehaviour
 
     private void DetectStairs()
     {
-        // Raycast slightly ahead and downward to detect stairs
         RaycastHit hit;
-        Vector3 rayStart = transform.position + Vector3.up * 0.1f; // Slightly above the ground
-        Vector3 rayDirection = transform.forward * 0.5f + Vector3.down; // Forward and downward
+        Vector3 rayStart = transform.position + Vector3.up * 0.1f;
+        Vector3 rayDirection = transform.forward * 0.5f + Vector3.down;
 
         if (Physics.Raycast(rayStart, rayDirection, out hit, 0.5f))
         {
@@ -200,7 +217,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(rayStart, rayDirection * 0.5f, Color.blue); // Debug visualization
+        Debug.DrawRay(rayStart, rayDirection * 0.5f, Color.blue);
     }
 
     private void OnCollisionStay(Collision collision)
