@@ -3,28 +3,29 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public Transform player;
+    public Transform cameraPoint;
     public float mouseSensitivity = 100f;
-    public float rotationSmoothTime = 0.05f;
-    public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f);
-    public float crouchOffsetY = 0.6f; // Camera moves down when crouching
-    public float crouchOffsetX = 0.6f; // Camera moves forward when crouching
     public float maxLookUpAngle = 60f;
     public float maxLookDownAngle = -45f;
+    public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f); // Default offset
 
     private float xRotation = 0f;
     private float yRotation = 0f;
-    private Vector3 currentVelocity = Vector3.zero;
     private PlayerInput playerInput;
-    private float targetCameraHeight;
-    private float targetCameraXOffset;
+    private Vector3 desiredCameraPosition;
+
+    void Awake()
+    {
+        transform.SetParent(cameraPoint); // Attach camera to cameraPoint
+        transform.localPosition = cameraOffset; // Apply the offset
+        transform.localRotation = Quaternion.identity; // Reset rotation
+    }
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         playerInput = player.GetComponent<PlayerInput>();
-        targetCameraHeight = cameraOffset.y; // Default height
-        targetCameraXOffset = cameraOffset.x; // Default X offset
     }
 
     void LateUpdate()
@@ -36,27 +37,29 @@ public class CameraControl : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, maxLookDownAngle, maxLookUpAngle);
 
-        Quaternion targetRotation = Quaternion.Euler(xRotation, yRotation, 0f);
-        transform.rotation = targetRotation;
+        // Rotate cameraPoint instead of the camera
+        cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         player.rotation = Quaternion.Euler(0f, yRotation, 0f);
 
-        AdjustCameraForCrouch();
-
-        Vector3 targetPosition = player.position + player.TransformDirection(new Vector3(targetCameraXOffset, targetCameraHeight, cameraOffset.z));
-        transform.position = targetPosition;
+        // Adjust camera position to avoid clipping into the player
+        AdjustCameraPosition();
     }
 
-    private void AdjustCameraForCrouch()
+    private void AdjustCameraPosition()
     {
-        if (playerInput.IsCrouching)
+        // Desired camera position (offset from cameraPoint)
+        Vector3 targetPosition = cameraPoint.position + cameraPoint.TransformDirection(cameraOffset);
+
+        // Raycast to check for obstacles between the cameraPoint and the desired position
+        if (Physics.Linecast(cameraPoint.position, targetPosition, out RaycastHit hit))
         {
-            targetCameraHeight = cameraOffset.y - crouchOffsetY;
-            targetCameraXOffset = cameraOffset.x + crouchOffsetX;
+            // Move the camera closer if there's an obstacle (e.g., the player body)
+            transform.position = hit.point;
         }
         else
         {
-            targetCameraHeight = cameraOffset.y;
-            targetCameraXOffset = cameraOffset.x;
+            // No obstruction, place the camera at the desired offset
+            transform.position = targetPosition;
         }
     }
 }

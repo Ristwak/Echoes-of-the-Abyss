@@ -14,7 +14,6 @@ public class PlayerInput : MonoBehaviour
     public float stepSmooth = 0.2f;
     public bool IsCrouching { get; private set; } = false;
     public GameObject playerHead;
-    public Camera headcamera;
     public Camera mainCamera;
 
     private Rigidbody rb;
@@ -24,40 +23,50 @@ public class PlayerInput : MonoBehaviour
     private Vector2 inputVector;
     private bool isJumping = false;
     private bool canMove = false;
+    private bool isWakingUp = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         isCrouched = false;
-        mainCamera.gameObject.SetActive(false);
     }
 
     void Start()
     {
         StartCoroutine(InitialAnimationDelay());
+        isWakingUp = false;
     }
 
     private IEnumerator InitialAnimationDelay()
     {
+        isWakingUp = true;
         animator.Play("Getting Up");
         yield return new WaitForSeconds(8f);
         playerHead.SetActive(false);
         canMove = true;
-        Destroy(headcamera);
-        mainCamera.gameObject.SetActive(true);
     }
 
     void Update()
     {
         if (!canMove) return;  // Block input during the initial delay
-
-        CheckGrounded();
-        HandleInput();
-        if (isCrouched)
-            CrouchMoving();
+        if (isWakingUp)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            mainCamera.GetComponent<CameraControl>().enabled = false;
+        }
         else
-            MovePlayer();
+        {
+            mainCamera.GetComponent<CameraControl>().enabled = true;
+            CheckGrounded();
+            HandleInput();
+            if (isCrouched)
+                CrouchMoving();
+            else
+                MovePlayer();
+        }
+
     }
 
     private void HandleInput()
@@ -115,12 +124,12 @@ public class PlayerInput : MonoBehaviour
             moveSpeed = backMovementSpeed;
             animator.Play("Walking Backwards");
         }
-        else if (inputVector.x < 0)
+        else if (inputVector.x > 0)
         {
             moveSpeed = sideMovementSpeed;
             animator.Play("Right Walk");
         }
-        else if (inputVector.x > 0)
+        else if (inputVector.x < 0)
         {
             moveSpeed = sideMovementSpeed;
             animator.Play("Left Walk");
