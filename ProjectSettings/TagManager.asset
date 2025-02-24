@@ -10,6 +10,8 @@ TagManager:
   - Door
   - Door1
   - Key1
+  - LeftMDoor
+  - RightMDoor
   layers:
   - Default
   - TransparentFX
