@@ -30,7 +30,6 @@ public class PlayerInput : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         isCrouched = false;
-        rb.useGravity = true;
     }
 
     void Start()
@@ -50,8 +49,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (!canMove) return;
-
+        if (!canMove) return;  // Block input during the initial delay
         if (isWakingUp)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -63,12 +61,12 @@ public class PlayerInput : MonoBehaviour
             mainCamera.GetComponent<CameraControl>().enabled = true;
             CheckGrounded();
             HandleInput();
-
             if (isCrouched)
                 CrouchMoving();
             else
                 MovePlayer();
         }
+
     }
 
     private void HandleInput()
@@ -97,14 +95,6 @@ public class PlayerInput : MonoBehaviour
         isGrounded = false;
     }
 
-    // private void Jump()
-    // {
-    //     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    //     isJumping = true;
-    //     isGrounded = false;
-    // }
-
-
     private void MovePlayer()
     {
         if (isJumping) return;
@@ -126,6 +116,7 @@ public class PlayerInput : MonoBehaviour
         right.Normalize();
 
         Vector3 desiredMoveDirection = forward * moveDirection.z + right * moveDirection.x;
+
         float moveSpeed = speed;
 
         if (inputVector.y < 0)
@@ -150,6 +141,8 @@ public class PlayerInput : MonoBehaviour
 
         Vector3 targetVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
         rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 10f);
+
+        DetectStairs();
     }
 
     private void StartCrouch()
@@ -210,17 +203,30 @@ public class PlayerInput : MonoBehaviour
 
     private void CheckGrounded()
     {
-        RaycastHit hit;
-        Vector3 origin = transform.position + Vector3.up * 0.2f;
-        if (Physics.SphereCast(origin, 0.3f, Vector3.down, out hit, groundDistance))
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance + 0.1f);
+        if (isGrounded && isJumping)
         {
-            isGrounded = true;
+            animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
             isJumping = false;
         }
-        else
+    }
+
+    private void DetectStairs()
+    {
+        RaycastHit hit;
+        Vector3 rayStart = transform.position + Vector3.up * 0.1f;
+        Vector3 rayDirection = transform.forward * 0.5f + Vector3.down;
+
+        if (Physics.Raycast(rayStart, rayDirection, out hit, 0.5f))
         {
-            isGrounded = false;
+            if (hit.collider.CompareTag("Stairs"))
+            {
+                Vector3 stepUpPosition = transform.position + Vector3.up * stepHeight;
+                transform.position = Vector3.Lerp(transform.position, stepUpPosition, stepSmooth);
+            }
         }
+
+        Debug.DrawRay(rayStart, rayDirection * 0.5f, Color.blue);
     }
 
     private void OnCollisionStay(Collision collision)

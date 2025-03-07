@@ -5,7 +5,7 @@ public class KeyPickup : MonoBehaviour
     public float pickupRange = 2f; // The range within which the player can pick up the key
     private Transform player;
     private bool isInRange = false;
-    public GameObject playerKey;
+    public GameObject playerobject;
     public bool havekey = false;
 
     void Start()
@@ -25,15 +25,15 @@ public class KeyPickup : MonoBehaviour
             // Pick up the key when pressing 'E'
             if (isInRange && Input.GetKeyDown(KeyCode.E))
             {
-                PickupKey();
+                Pickupobject();
             }
         }
     }
 
-    void PickupKey()
+    void Pickupobject()
     {
         gameObject.SetActive(false);
-        playerKey.gameObject.SetActive(true);
+        playerobject.gameObject.SetActive(true);
         havekey = true;
     }
 }

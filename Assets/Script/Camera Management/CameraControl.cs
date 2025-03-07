@@ -7,8 +7,7 @@ public class CameraControl : MonoBehaviour
     public float mouseSensitivity = 100f;
     public float maxLookUpAngle = 60f;
     public float maxLookDownAngle = -45f;
-    public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f); // Default offset
-    public LayerMask obstructionMask; // Layers to check for obstructions (e.g., Player, Walls)
+    public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f);
 
     private float xRotation = 0f;
     private float yRotation = 0f;
@@ -52,9 +51,9 @@ public class CameraControl : MonoBehaviour
         Vector3 targetPosition = cameraPoint.position + cameraPoint.TransformDirection(cameraOffset);
 
         // Raycast to check for obstacles between the cameraPoint and the desired position
-        if (Physics.Linecast(cameraPoint.position, targetPosition, out RaycastHit hit, obstructionMask))
+        if (Physics.Linecast(cameraPoint.position, targetPosition, out RaycastHit hit))
         {
-            // Move the camera closer if there's an obstacle (e.g., player body, walls)
+            // Move the camera closer if there's an obstacle (e.g., the player body)
             transform.position = hit.point;
         }
         else
