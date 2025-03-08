@@ -11,55 +11,57 @@ public class CameraControl : MonoBehaviour
 
     private float xRotation = 0f;
     private float yRotation = 0f;
-    private PlayerInput playerInput;
-    private Vector3 desiredCameraPosition;
+    private bool canControl = false; // Prevent player control initially
 
     void Awake()
     {
-        transform.SetParent(cameraPoint); // Attach camera to cameraPoint
-        transform.localPosition = cameraOffset; // Apply the offset
-        transform.localRotation = Quaternion.identity; // Reset rotation
+        Cursor.lockState = CursorLockMode.Locked;
+        transform.SetParent(cameraPoint);
+        transform.localPosition = cameraOffset;
+        transform.localRotation = Quaternion.identity;
     }
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerInput = player.GetComponent<PlayerInput>();
+        Invoke("EnableControl", 8f); // Allow control after 8 seconds
     }
 
     void LateUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        if (canControl)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, maxLookDownAngle, maxLookUpAngle);
+            yRotation += mouseX;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, maxLookDownAngle, maxLookUpAngle);
+        }
 
-        // Rotate cameraPoint instead of the camera
+        // The camera still follows cameraPoint even when input is disabled
         cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         player.rotation = Quaternion.Euler(0f, yRotation, 0f);
 
-        // Adjust camera position to avoid clipping into the player
         AdjustCameraPosition();
     }
 
     private void AdjustCameraPosition()
     {
-        // Desired camera position (offset from cameraPoint)
         Vector3 targetPosition = cameraPoint.position + cameraPoint.TransformDirection(cameraOffset);
 
-        // Raycast to check for obstacles between the cameraPoint and the desired position
         if (Physics.Linecast(cameraPoint.position, targetPosition, out RaycastHit hit))
         {
-            // Move the camera closer if there's an obstacle (e.g., the player body)
             transform.position = hit.point;
         }
         else
         {
-            // No obstruction, place the camera at the desired offset
             transform.position = targetPosition;
         }
+    }
+
+    private void EnableControl()
+    {
+        canControl = true; // Enable player control after 8 sec
     }
 }
