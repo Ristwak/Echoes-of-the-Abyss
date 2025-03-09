@@ -8,7 +8,7 @@ public class PlayerInteractions : MonoBehaviour
     public GameObject raycastPoint;
 
     private Door door;
-    private MetallicDoor metallicDoor;
+    private DualDoor dualDoor;
     private Rigidbody rb;
     private Animator animator;
 
@@ -27,7 +27,7 @@ public class PlayerInteractions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             OpenDoor();
-            MetallicDoorInteraction();
+            DualDoorInteraction();
         }
     }
 
@@ -41,14 +41,14 @@ public class PlayerInteractions : MonoBehaviour
         if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
         {
             door = hit.transform.GetComponent<Door>();
-            if (door != null && hit.collider.CompareTag("Door1") && keyPickup.gameObject.CompareTag("Key1"))
+            if (door != null && hit.collider.CompareTag("Door") && keyPickup.gameObject.CompareTag("Key1"))
             {
                 door.doorHandler();
             }
         }
     }
 
-    void MetallicDoorInteraction()
+    void DualDoorInteraction()
     {
         if (!frontline) return;
 
@@ -58,24 +58,22 @@ public class PlayerInteractions : MonoBehaviour
         if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
         {
             Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
-            metallicDoor = hit.transform.parent.GetComponent<MetallicDoor>();
-            if (metallicDoor == null)
+            dualDoor = hit.transform.parent.GetComponent<DualDoor>();
+            if (dualDoor == null)
             {
                 Debug.LogWarning("MetallicDoor component NOT found on: " + hit.collider.gameObject.name);
                 return;
             }
 
-            if (metallicDoor != null)
+            if (dualDoor != null)
             {
-                if (hit.collider.CompareTag("LeftMDoor"))
+                if (hit.collider.transform.parent.CompareTag("Almirah"))
                 {
-                    Debug.Log("Left Door");
-                    metallicDoor.LeftDoor();
+                    PlayAnim(hit);
                 }
-                if (hit.collider.CompareTag("RightMDoor"))
+                else if (hit.collider.transform.parent.CompareTag("Door4") && keyPickup.gameObject.CompareTag("Key1"))
                 {
-                    Debug.Log("Right Door");
-                    metallicDoor.RightDoor();
+                    PlayAnim(hit);
                 }
             }
         }
@@ -88,5 +86,19 @@ public class PlayerInteractions : MonoBehaviour
         frontline = Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance);
 
         Debug.DrawRay(rayPoint, transform.forward * frontDistance, frontline ? Color.green : Color.red);
+    }
+
+    void PlayAnim(RaycastHit hit)
+    {
+        if (hit.collider.CompareTag("LeftDoor"))
+        {
+            Debug.Log("Left Door");
+            dualDoor.LeftDoor();
+        }
+        if (hit.collider.CompareTag("RightDoor"))
+        {
+            Debug.Log("Right Door");
+            dualDoor.RightDoor();
+        }
     }
 }

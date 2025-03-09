@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MetallicDoor : MonoBehaviour
+public class DualDoor : MonoBehaviour
 {
     public Animator leftDoorAnimator;
     public Animator rightDoorAnimator;

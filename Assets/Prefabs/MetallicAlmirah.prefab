@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3462686514166658783}
   m_Layer: 0
   m_Name: MetallicAlmirah
-  m_TagString: Untagged
+  m_TagString: Almirah
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -62,12 +62,13 @@ GameObject:
   - component: {fileID: 4523549672333957840}
   - component: {fileID: 9149016830359941739}
   - component: {fileID: 4239123771024147443}
+  - component: {fileID: 2606439381244779942}
   m_Layer: 0
   m_Name: Case_Door_R
-  m_TagString: RightMDoor
+  m_TagString: RightDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7241703358121021099
 Transform:
@@ -181,6 +182,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &2606439381244779942
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445962003050661428}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &6198395255631038883
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,10 +224,10 @@ GameObject:
   - component: {fileID: 1824626872963614928}
   m_Layer: 0
   m_Name: Case_Door_L
-  m_TagString: LeftMDoor
+  m_TagString: LeftDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3641127492975902034
 Transform:
