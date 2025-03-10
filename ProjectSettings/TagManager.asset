@@ -15,6 +15,10 @@ TagManager:
   - RightDoor
   - StairDoor
   - StairKey
+  - Door
+  - Door5
+  - Door2
+  - key4
   layers:
   - Default
   - TransparentFX

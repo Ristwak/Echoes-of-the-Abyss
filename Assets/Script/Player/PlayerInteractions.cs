@@ -12,7 +12,7 @@ public class PlayerInteractions : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
 
-    public KeyPickup keyPickup;
+    public ObjectPickup objectPickup;
     private bool frontline;
 
     void Awake()
@@ -33,7 +33,7 @@ public class PlayerInteractions : MonoBehaviour
 
     void OpenDoor()
     {
-        if (!frontline || keyPickup == null || !keyPickup.havekey) return;
+        if (!frontline || objectPickup == null || !objectPickup.havekey) return;
 
         RaycastHit hit;
         Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.up * 1.5f;
@@ -41,9 +41,16 @@ public class PlayerInteractions : MonoBehaviour
         if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
         {
             door = hit.transform.GetComponent<Door>();
-            if (door != null && hit.collider.CompareTag("Door") && keyPickup.gameObject.CompareTag("Key1"))
+            if (door != null)
             {
-                door.doorHandler();
+                if (hit.collider.CompareTag("Door") && objectPickup.gameObject.CompareTag("Key1"))
+                {
+                    door.doorHandler();
+                }
+                else if (hit.collider.CompareTag("StairDoor") && objectPickup.gameObject.CompareTag("StairKey"))
+                {
+                    door.doorHandler();
+                }
             }
         }
     }
@@ -71,7 +78,7 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     PlayAnim(hit);
                 }
-                else if (hit.collider.transform.parent.CompareTag("Door4") && keyPickup.gameObject.CompareTag("Key1"))
+                else if (hit.collider.transform.parent.CompareTag("Door4") && objectPickup.gameObject.CompareTag("Key4"))
                 {
                     PlayAnim(hit);
                 }
