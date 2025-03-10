@@ -7,6 +7,8 @@ public class KeyPickup : MonoBehaviour
     private bool isInRange = false;
     public bool havekey = false;
 
+    private static KeyPickup currentKeyPickup; // Reference to the current key being held
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find player by tag
@@ -24,14 +26,40 @@ public class KeyPickup : MonoBehaviour
             // Pick up the key when pressing 'E'
             if (isInRange && Input.GetKeyDown(KeyCode.E))
             {
-                Pickupobject();
+                DropPreviousKey(); // Drop the previous key before picking up a new one
+                PickupObject();
             }
         }
     }
 
-    void Pickupobject()
+    void PickupObject()
     {
-        gameObject.SetActive(false);
         havekey = true;
+
+        // Update the reference in PlayerInteractions
+        PlayerInteractions playerInteractions = player.GetComponent<PlayerInteractions>();
+        if (playerInteractions != null)
+        {
+            playerInteractions.UpdateKeyReference(this);
+        }
+
+        // Store the currently picked-up key
+        currentKeyPickup = this;
+
+        // Deactivate the key object (Simulating picking up)
+        gameObject.SetActive(false);
+    }
+
+    void DropPreviousKey()
+    {
+        if (currentKeyPickup != null)
+        {
+            // Reactivate the previous key at player's position
+            currentKeyPickup.transform.position = player.position + Vector3.forward * 1f; // Drops key in front of player
+            currentKeyPickup.gameObject.SetActive(true);
+
+            // Reset havekey for the dropped key
+            currentKeyPickup.havekey = false;
+        }
     }
 }

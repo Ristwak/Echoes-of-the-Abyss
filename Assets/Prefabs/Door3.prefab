@@ -155,9 +155,10 @@ GameObject:
   - component: {fileID: 23332643394043706}
   - component: {fileID: 64619257792541486}
   - component: {fileID: 4235015797414815383}
+  - component: {fileID: 3025219223165903980}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: StairKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,3 +275,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3025219223165903980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744751282808826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305553a98df9f2d4682cc0e566da428a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

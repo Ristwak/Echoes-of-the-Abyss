@@ -52,7 +52,7 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     door.doorHandler();
                 }
-                else if (hit.collider.CompareTag("StairDoor") && keyPickup.gameObject.CompareTag("StairKey"))
+                if (hit.collider.CompareTag("StairDoor") && keyPickup.gameObject.CompareTag("StairKey"))
                 {
                     door.doorHandler();
                 }
@@ -112,5 +112,10 @@ public class PlayerInteractions : MonoBehaviour
             Debug.Log("Right Door");
             dualDoor.RightDoor();
         }
+    }
+
+    public void UpdateKeyReference(KeyPickup newKey)
+    {
+        keyPickup = newKey;
     }
 }

@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 489422520208660029}
   m_Layer: 0
   m_Name: LongDoorKey
-  m_TagString: key4
+  m_TagString: Key4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
