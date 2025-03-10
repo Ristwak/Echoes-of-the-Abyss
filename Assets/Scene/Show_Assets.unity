@@ -819,6 +819,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 953945648451742596, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 953945648451742596, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
+      propertyPath: chooseKeyForCookie
+      value: E
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436921317756095221, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
+      propertyPath: onOffLightKey
+      value: T
+      objectReference: {fileID: 0}
     - target: {fileID: 1488075909773825146, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
       propertyPath: keyPickup
       value: 
@@ -867,6 +879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6830089529757344603, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
+      propertyPath: playerTorch
+      value: 
+      objectReference: {fileID: 1487101015}
     - target: {fileID: 6830089529757344603, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
       propertyPath: cameraTransform
       value: 

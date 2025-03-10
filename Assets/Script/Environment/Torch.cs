@@ -38,6 +38,12 @@ public class Torch : MonoBehaviour
             {
                 Pickupobject();
             }
+
+            if (havetorch)
+            {
+                playerTorch.transform.gameObject.SetActive(true);
+                havetorch = true;
+            }
         }
     }
 

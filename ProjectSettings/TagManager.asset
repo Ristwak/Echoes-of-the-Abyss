@@ -19,6 +19,7 @@ TagManager:
   - Door5
   - Door2
   - Key4
+  - key4
   layers:
   - Default
   - TransparentFX

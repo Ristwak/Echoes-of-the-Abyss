@@ -81,31 +81,11 @@ public class PlayerInteractions : MonoBehaviour
             {
                 if (hit.collider.transform.parent.CompareTag("Almirah"))
                 {
-                    // PlayAnim(hit);
-                    if (hit.collider.CompareTag("LeftDoor"))
-                    {
-                        Debug.Log("Left Door");
-                        dualDoor.LeftDoor();
-                    }
-                    if (hit.collider.CompareTag("RightDoor"))
-                    {
-                        Debug.Log("Right Door");
-                        dualDoor.RightDoor();
-                    }
+                    PlayAnim(hit);
                 }
-                else if (hit.collider.transform.parent.CompareTag("Door4") && keyPickup.gameObject.CompareTag("Key4"))
+                if (hit.collider.transform.parent.CompareTag("Door4") && keyPickup.gameObject.CompareTag("Key4"))
                 {
-                    // PlayAnim(hit);
-                    if (hit.collider.CompareTag("LeftDoor"))
-                    {
-                        Debug.Log("Left Door");
-                        dualDoor.LeftDoor();
-                    }
-                    if (hit.collider.CompareTag("RightDoor"))
-                    {
-                        Debug.Log("Right Door");
-                        dualDoor.RightDoor();
-                    }
+                    PlayAnim(hit);
                 }
             }
         }
