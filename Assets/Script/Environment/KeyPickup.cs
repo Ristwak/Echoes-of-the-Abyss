@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObjectPickup : MonoBehaviour
+public class KeyPickup : MonoBehaviour
 {
     public float pickupRange = 2f; // The range within which the player can pick up the key
     private Transform player;

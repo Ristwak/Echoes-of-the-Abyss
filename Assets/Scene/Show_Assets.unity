@@ -900,6 +900,10 @@ PrefabInstance:
       value: -0.22942719
       objectReference: {fileID: 0}
     - target: {fileID: 9025559481748017434, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
+      propertyPath: m_Name
+      value: Player Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025559481748017434, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1504,6 +1508,11 @@ Transform:
   - {fileID: 198809255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1487101015 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8529470257767741109, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
+  m_PrefabInstance: {fileID: 754738069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1551304983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1708,7 +1717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4974107504745654880, guid: 57cdbc9332f8d0d44b656313f59df101, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.138113
+      value: 6.036007
       objectReference: {fileID: 0}
     - target: {fileID: 4974107504745654880, guid: 57cdbc9332f8d0d44b656313f59df101, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1716,7 +1725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4974107504745654880, guid: 57cdbc9332f8d0d44b656313f59df101, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2238293
+      value: 2.2883682
       objectReference: {fileID: 0}
     - target: {fileID: 4974107504745654880, guid: 57cdbc9332f8d0d44b656313f59df101, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1782,6 +1791,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 473873830}
+  playerTorch: {fileID: 1487101015}
+  pickupRange: 2
+  havetorch: 0
 --- !u!4 &1823412043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4404195442393844, guid: 958521058a9c74341bcc8323137f68b1, type: 3}
@@ -1791,11 +1803,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4037751736507588, guid: a87dd23a0510278409781030772717e1, type: 3}
   m_PrefabInstance: {fileID: 444244468}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2138670807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8173129553665179167, guid: 9c07494b67bb43245938644101c5af4b, type: 3}
-  m_PrefabInstance: {fileID: 754738069}
   m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &2146711527
 LightingSettings:
@@ -28402,6 +28409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LongDoorKey
       objectReference: {fileID: 0}
+    - target: {fileID: 3818905165854279622, guid: 6d4cc4fdddeca8240be612fb9f9d2f47, type: 3}
+      propertyPath: m_TagString
+      value: Key4
+      objectReference: {fileID: 0}
     - target: {fileID: 7319747836564171983, guid: 6d4cc4fdddeca8240be612fb9f9d2f47, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.345219
@@ -28503,18 +28514,6 @@ PrefabInstance:
     - target: {fileID: 7729639258703667901, guid: aceeac56c0acfd84c87f77227103beb2, type: 3}
       propertyPath: m_Name
       value: FirstKey
-      objectReference: {fileID: 0}
-    - target: {fileID: 8790357486474651134, guid: aceeac56c0acfd84c87f77227103beb2, type: 3}
-      propertyPath: playerKey
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8790357486474651134, guid: aceeac56c0acfd84c87f77227103beb2, type: 3}
-      propertyPath: playerobject
-      value: 
-      objectReference: {fileID: 2138670807}
-    - target: {fileID: 8790357486474651134, guid: aceeac56c0acfd84c87f77227103beb2, type: 3}
-      propertyPath: playerAnimator
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

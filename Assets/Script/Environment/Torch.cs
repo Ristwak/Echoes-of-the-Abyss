@@ -45,6 +45,6 @@ public class Torch : MonoBehaviour
     {
         gameObject.SetActive(false);
         playerTorch.transform.gameObject.SetActive(true);
-        havekey = true;
+        havetorch = true;
     }
 }
