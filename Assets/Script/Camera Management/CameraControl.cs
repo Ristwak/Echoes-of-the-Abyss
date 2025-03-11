@@ -16,7 +16,8 @@ public class CameraControl : MonoBehaviour
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        transform.SetParent(cameraPoint);
+        // transform.SetParent(cameraPoint);
+        transform.SetParent(null);
         transform.localPosition = cameraOffset;
         transform.localRotation = Quaternion.identity;
     }
@@ -40,9 +41,11 @@ public class CameraControl : MonoBehaviour
         }
 
         // The camera still follows cameraPoint even when input is disabled
+        gameObject.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         player.rotation = Quaternion.Euler(0f, yRotation, 0f);
 
+        transform.position = Vector3.Lerp(transform.position, cameraPoint.position + cameraPoint.TransformDirection(cameraOffset), Time.deltaTime * 10f);
         AdjustCameraPosition();
     }
 

@@ -55,7 +55,7 @@ public class KeyPickup : MonoBehaviour
         if (currentKeyPickup != null)
         {
             // Reactivate the previous key at player's position
-            currentKeyPickup.transform.position = player.position + Vector3.forward * 1f; // Drops key in front of player
+            currentKeyPickup.transform.position = player.position; // Drops key in front of player
             currentKeyPickup.gameObject.SetActive(true);
 
             // Reset havekey for the dropped key

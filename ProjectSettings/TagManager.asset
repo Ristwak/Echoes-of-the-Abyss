@@ -20,6 +20,7 @@ TagManager:
   - Door2
   - Key4
   - key4
+  - NoKeyDoor
   layers:
   - Default
   - TransparentFX

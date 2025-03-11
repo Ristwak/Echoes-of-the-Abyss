@@ -4,6 +4,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     [Header("Variables")]
     public float frontDistance = 2.0f;
+    public float frontlinetoOpenDoor = 1.5f;
     public Transform raycastOrigin;
     public GameObject raycastPoint;
 
@@ -41,7 +42,7 @@ public class PlayerInteractions : MonoBehaviour
         }
 
         RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.up * 1.5f;
+        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
 
         if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
         {
@@ -56,6 +57,10 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     door.doorHandler();
                 }
+                if (hit.collider.CompareTag("NoKeyDoor"))
+                {
+                    door.doorHandler();
+                }
             }
         }
     }
@@ -65,7 +70,7 @@ public class PlayerInteractions : MonoBehaviour
         if (!frontline) return;
 
         RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.up * 1.5f;
+        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
 
         if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
         {
@@ -94,7 +99,7 @@ public class PlayerInteractions : MonoBehaviour
     void CheckFront()
     {
         RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.up * 1.5f;
+        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
         frontline = Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance);
 
         Debug.DrawRay(rayPoint, transform.forward * frontDistance, frontline ? Color.green : Color.red);
