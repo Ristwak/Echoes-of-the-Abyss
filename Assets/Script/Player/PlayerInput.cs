@@ -42,7 +42,10 @@ public class PlayerInput : MonoBehaviour
     {
         isWakingUp = true;
         animator.Play("Getting Up");
+        rb.isKinematic = true; // Disable physics during animation
         yield return new WaitForSeconds(8f);
+        transform.position = new Vector3(15.1631279f, -1.96383548f, 18.5155659f);
+        rb.isKinematic = true; // Disable physics during animation
         playerHead.SetActive(false);
         canMove = true;
     }

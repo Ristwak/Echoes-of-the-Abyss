@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c3eb64e478b2bb748ae1501daf818368
+timeCreated: 1513713729
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 105033
+  packageName: 6 x 3D Cute Toy Models
+  packageVersion: 1.0
+  assetPath: Assets/3DTOYS/PREFABS/BEAR.prefab
+  uploadId: 219556
