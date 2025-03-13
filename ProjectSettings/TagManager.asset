@@ -19,8 +19,8 @@ TagManager:
   - Door5
   - Door2
   - Key4
-  - key4
   - NoKeyDoor
+  - MorgueBox
   layers:
   - Default
   - TransparentFX

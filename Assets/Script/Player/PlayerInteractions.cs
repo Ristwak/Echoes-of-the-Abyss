@@ -8,6 +8,7 @@ public class PlayerInteractions : MonoBehaviour
     public Transform raycastOrigin;
     public GameObject raycastPoint;
 
+    private MorgueBox morgueBox;
     private Door door;
     private DualDoor dualDoor;
     private Rigidbody rb;
@@ -29,6 +30,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             OpenDoor();
             DualDoorInteraction();
+            checkMorgue();
         }
     }
 
@@ -96,6 +98,25 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 
+    void checkMorgue()
+    {
+        RaycastHit hit;
+        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
+
+        if(Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
+        {
+            morgueBox = hit.transform.parent.GetComponent<MorgueBox>();
+            if (morgueBox != null)
+            {
+                morgueBox.PlayAnim(hit.collider.gameObject.name);
+            }
+            else
+            {
+                Debug.LogWarning("MorgueBox component NOT found on: " + hit.collider.gameObject.name);
+            }
+        }
+    }
+
     void CheckFront()
     {
         RaycastHit hit;
@@ -109,12 +130,10 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (hit.collider.CompareTag("LeftDoor"))
         {
-            Debug.Log("Left Door");
             dualDoor.LeftDoor();
         }
         if (hit.collider.CompareTag("RightDoor"))
         {
-            Debug.Log("Right Door");
             dualDoor.RightDoor();
         }
     }
