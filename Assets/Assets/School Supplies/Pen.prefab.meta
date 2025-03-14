@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0bc9f3e0b20fe984697b880329a181fd
+timeCreated: 1498676935
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 96667
+  packageName: School Supplies
+  packageVersion: 1.0
+  assetPath: Assets/Models/School Supplies/Pen.prefab
+  uploadId: 195207
