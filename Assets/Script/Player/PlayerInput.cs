@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerInput : MonoBehaviour
 {
     [Header("Variables")]
@@ -9,25 +10,27 @@ public class PlayerInput : MonoBehaviour
     public float backMovementSpeed = 0.5f;
     public float crouchedMovementSpeed = 0.5f;
     public float jumpForce = 5f;
+    public float gravity = 9.81f;
     public float groundDistance = 0.9f;
-    public float stepHeight = 0.3f;
-    public float stepSmooth = 0.2f;
     public bool IsCrouching { get; private set; } = false;
     public GameObject playerHead;
+    public GameObject playerTorso;
+    public GameObject playerUnderHalfBody;
     public Camera mainCamera;
 
-    private Rigidbody rb;
-    private bool isCrouched;
-    private bool isGrounded;
+    private CharacterController characterController;
     private Animator animator;
     private Vector2 inputVector;
+    private Vector3 velocity;
     private bool isJumping = false;
     private bool canMove = false;
     private bool isWakingUp = false;
+    private bool isGrounded;
+    private bool isCrouched;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         isCrouched = false;
     }
@@ -42,17 +45,17 @@ public class PlayerInput : MonoBehaviour
     {
         isWakingUp = true;
         animator.Play("Getting Up");
-        // rb.isKinematic = true;
         yield return new WaitForSeconds(8f);
-        transform.position = new Vector3(15.1631279f, -1.96383548f, 18.5155659f);
-        // rb.isKinematic = true;
         playerHead.SetActive(false);
+        playerTorso.SetActive(false);
+        playerUnderHalfBody.SetActive(false);
         canMove = true;
     }
 
     void Update()
     {
-        if (!canMove) return;  // Block input during the initial delay
+        if (!canMove) return;
+
         if (isWakingUp)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -64,12 +67,12 @@ public class PlayerInput : MonoBehaviour
             mainCamera.GetComponent<CameraControl>().enabled = true;
             CheckGrounded();
             HandleInput();
+            ApplyGravity();
             if (isCrouched)
                 CrouchMoving();
             else
                 MovePlayer();
         }
-
     }
 
     private void HandleInput()
@@ -81,31 +84,25 @@ public class PlayerInput : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouched)
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            StartCrouch();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            StopCrouch();
+            if (!isCrouched) StartCrouch();
+            else StopCrouch();
         }
     }
 
     private void Jump()
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        velocity.y = jumpForce;
         isJumping = true;
-        isGrounded = false;
     }
 
     private void MovePlayer()
     {
-        if (isJumping) return;
-
         if (inputVector == Vector2.zero)
         {
-            animator.Play("Idle");
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                animator.Play("Idle");
             return;
         }
 
@@ -125,28 +122,30 @@ public class PlayerInput : MonoBehaviour
         if (inputVector.y < 0)
         {
             moveSpeed = backMovementSpeed;
-            animator.Play("Walking Backwards");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walking Backwards"))
+                animator.Play("Walking Backwards");
         }
         else if (inputVector.x > 0)
         {
             moveSpeed = sideMovementSpeed;
-            animator.Play("Right Walk");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Right Walk"))
+                animator.Play("Right Walk");
         }
         else if (inputVector.x < 0)
         {
             moveSpeed = sideMovementSpeed;
-            animator.Play("Left Walk");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Left Walk"))
+                animator.Play("Left Walk");
         }
         else
         {
-            animator.Play("Walking");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walking"))
+                animator.Play("Walking");
         }
 
-        Vector3 targetVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 10f);
-
-        DetectStairs();
+        characterController.Move(desiredMoveDirection * moveSpeed * Time.deltaTime);
     }
+
 
     private void StartCrouch()
     {
@@ -164,11 +163,10 @@ public class PlayerInput : MonoBehaviour
 
     private void CrouchMoving()
     {
-        if (isJumping) return;
-
         if (inputVector == Vector2.zero)
         {
-            animator.Play("Idle Crouching");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle Crouching"))
+                animator.Play("Idle Crouching");
             return;
         }
 
@@ -186,65 +184,49 @@ public class PlayerInput : MonoBehaviour
 
         if (inputVector.y < 0)
         {
-            animator.Play("Crouched Walking Backwards");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking Backwards"))
+                animator.Play("Crouched Walking Backwards");
         }
         else if (inputVector.x > 0)
         {
-            animator.Play("Crouched Walking Right");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking Right"))
+                animator.Play("Crouched Walking Right");
         }
         else if (inputVector.x < 0)
         {
-            animator.Play("Crouched Walking Left");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking Left"))
+                animator.Play("Crouched Walking Left");
         }
         else
         {
-            animator.Play("Crouched Walking");
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking"))
+                animator.Play("Crouched Walking");
         }
 
-        rb.linearVelocity = new Vector3(desiredMoveDirection.x * moveSpeed, rb.linearVelocity.y, desiredMoveDirection.z * moveSpeed);
+        characterController.Move(desiredMoveDirection * moveSpeed * Time.deltaTime);
     }
+
 
     private void CheckGrounded()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundDistance + 0.1f);
+        isGrounded = characterController.isGrounded;
         if (isGrounded && isJumping)
         {
-            animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
             isJumping = false;
+            animator.Play(inputVector == Vector2.zero ? "Idle" : "Walking");
         }
     }
 
-    private void DetectStairs()
+    private void ApplyGravity()
     {
-        RaycastHit hit;
-        Vector3 rayStart = transform.position + Vector3.up * 0.1f;
-        Vector3 rayDirection = transform.forward * 0.5f + Vector3.down;
+        isGrounded = characterController.isGrounded;
 
-        if (Physics.Raycast(rayStart, rayDirection, out hit, 0.5f))
+        if (isGrounded && velocity.y < 0)
         {
-            if (hit.collider.CompareTag("Stairs"))
-            {
-                Vector3 stepUpPosition = transform.position + Vector3.up * stepHeight;
-                transform.position = Vector3.Lerp(transform.position, stepUpPosition, stepSmooth);
-            }
+            velocity.y = -2f; // Keep player grounded
         }
 
-        Debug.DrawRay(rayStart, rayDirection * 0.5f, Color.blue);
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs"))
-        {
-            isGrounded = false;
-        }
+        velocity.y -= gravity * Time.deltaTime; // Apply gravity
+        characterController.Move(velocity * Time.deltaTime);
     }
 }

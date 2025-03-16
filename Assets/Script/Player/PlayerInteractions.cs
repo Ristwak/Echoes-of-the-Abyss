@@ -103,7 +103,7 @@ public class PlayerInteractions : MonoBehaviour
         RaycastHit hit;
         Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
 
-        if(Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
+        if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
         {
             morgueBox = hit.transform.parent.GetComponent<MorgueBox>();
             if (morgueBox != null)
@@ -119,11 +119,20 @@ public class PlayerInteractions : MonoBehaviour
 
     void CheckFront()
     {
-        RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
-        frontline = Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance);
+        Transform camTransform = Camera.main.transform;
 
-        Debug.DrawRay(rayPoint, transform.forward * frontDistance, frontline ? Color.green : Color.red);
+        Vector3 rayOrigin = camTransform.position;
+
+        Vector3 rayDirection = camTransform.forward;
+
+        frontline = Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, frontDistance);
+
+        if (frontline)
+        {
+            Debug.Log("Hit: " + hit.collider.name);
+        }
+
+        Debug.DrawRay(rayOrigin, rayDirection * frontDistance, frontline ? Color.green : Color.red);
     }
 
     void PlayAnim(RaycastHit hit)

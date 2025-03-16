@@ -16,7 +16,6 @@ public class CameraControl : MonoBehaviour
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        // transform.SetParent(cameraPoint);
         transform.SetParent(null);
         transform.localPosition = cameraOffset;
         transform.localRotation = Quaternion.identity;
