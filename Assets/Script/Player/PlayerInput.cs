@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
     private bool canMove = false;
     private bool isWakingUp = false;
     private bool isGrounded;
-    private bool isCrouched;
+    public bool isCrouched;
 
     void Awake()
     {
@@ -47,8 +47,8 @@ public class PlayerInput : MonoBehaviour
         animator.Play("Getting Up");
         yield return new WaitForSeconds(8f);
         playerHead.SetActive(false);
-        playerTorso.SetActive(false);
-        playerUnderHalfBody.SetActive(false);
+        // playerTorso.SetActive(false);
+        // playerUnderHalfBody.SetActive(false);
         canMove = true;
     }
 

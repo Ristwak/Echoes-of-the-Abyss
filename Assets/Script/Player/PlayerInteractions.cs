@@ -38,15 +38,18 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (!frontline || keyPickup == null || !keyPickup.havekey)
         {
-            Debug.Log("No key found");
-            Debug.Log("No Frontline found");
             return;
         }
 
-        RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
+        Transform camTransform = Camera.main.transform;
 
-        if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
+        Vector3 rayOrigin = camTransform.position;
+
+        Vector3 rayDirection = camTransform.forward;
+
+        frontline = Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, frontDistance);
+
+        if (frontline)
         {
             door = hit.transform.GetComponent<Door>();
             if (door != null)
@@ -63,6 +66,10 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     door.doorHandler();
                 }
+                if(hit.collider.CompareTag("Almirah"))
+                {
+                    door.doorHandler();
+                }
             }
         }
     }
@@ -71,10 +78,15 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (!frontline) return;
 
-        RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
+        Transform camTransform = Camera.main.transform;
 
-        if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
+        Vector3 rayOrigin = camTransform.position;
+
+        Vector3 rayDirection = camTransform.forward;
+
+        frontline = Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, frontDistance);
+
+        if (frontline)
         {
             dualDoor = hit.transform.parent.GetComponent<DualDoor>();
             Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
@@ -100,10 +112,15 @@ public class PlayerInteractions : MonoBehaviour
 
     void checkMorgue()
     {
-        RaycastHit hit;
-        Vector3 rayPoint = raycastPoint ? raycastPoint.transform.position : transform.position + Vector3.back * frontlinetoOpenDoor;
+        Transform camTransform = Camera.main.transform;
 
-        if (Physics.Raycast(rayPoint, transform.forward, out hit, frontDistance))
+        Vector3 rayOrigin = camTransform.position;
+
+        Vector3 rayDirection = camTransform.forward;
+
+        frontline = Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, frontDistance);
+
+        if (frontline)
         {
             morgueBox = hit.transform.parent.GetComponent<MorgueBox>();
             if (morgueBox != null)
