@@ -9,6 +9,7 @@ public class PlayerInteractions : MonoBehaviour
     public GameObject raycastPoint;
 
     private MorgueBox morgueBox;
+    private Almirah almirah;
     private Door door;
     private DualDoor dualDoor;
     private Rigidbody rb;
@@ -31,6 +32,7 @@ public class PlayerInteractions : MonoBehaviour
             OpenDoor();
             DualDoorInteraction();
             checkMorgue();
+            NoKeythings();
         }
     }
 
@@ -63,10 +65,6 @@ public class PlayerInteractions : MonoBehaviour
                     door.doorHandler();
                 }
                 if (hit.collider.CompareTag("NoKeyDoor"))
-                {
-                    door.doorHandler();
-                }
-                if(hit.collider.CompareTag("Almirah"))
                 {
                     door.doorHandler();
                 }
@@ -130,6 +128,32 @@ public class PlayerInteractions : MonoBehaviour
             else
             {
                 Debug.LogWarning("MorgueBox component NOT found on: " + hit.collider.gameObject.name);
+            }
+        }
+    }
+
+    void NoKeythings()
+    {
+        if (!frontline) return;
+
+        Transform camTransform = Camera.main.transform;
+
+        Vector3 rayOrigin = camTransform.position;
+
+        Vector3 rayDirection = camTransform.forward;
+
+        frontline = Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, frontDistance);
+
+        if (frontline)
+        {
+            almirah = hit.transform.GetComponent<Almirah>();
+            if (almirah != null)
+            {
+                if (hit.collider.CompareTag("Almirah"))
+                {
+                    Debug.Log("Almirah play animation from nokeythings");
+                    almirah.doorHandler();
+                }
             }
         }
     }

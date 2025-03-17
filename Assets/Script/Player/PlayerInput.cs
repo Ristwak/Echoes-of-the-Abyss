@@ -17,6 +17,9 @@ public class PlayerInput : MonoBehaviour
     public GameObject playerTorso;
     public GameObject playerUnderHalfBody;
     public Camera mainCamera;
+    public float standingHeight = 1.6f; // Normal standing height
+    public float crouchingHeight = 1.0f; // Height when crouched
+    public float cameraTransitionSpeed = 5f; // Speed of transition
 
     private CharacterController characterController;
     private Animator animator;
@@ -25,7 +28,7 @@ public class PlayerInput : MonoBehaviour
     private bool isJumping = false;
     private bool canMove = false;
     private bool isWakingUp = false;
-    private bool isGrounded;
+    public bool isGrounded;
     public bool isCrouched;
 
     void Awake()
@@ -99,6 +102,7 @@ public class PlayerInput : MonoBehaviour
 
     private void MovePlayer()
     {
+        isGrounded = true;
         if (inputVector == Vector2.zero)
         {
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -152,6 +156,7 @@ public class PlayerInput : MonoBehaviour
         isCrouched = true;
         IsCrouching = true;
         animator.Play("Crouch");
+
     }
 
     private void StopCrouch()
@@ -159,6 +164,7 @@ public class PlayerInput : MonoBehaviour
         isCrouched = false;
         IsCrouching = false;
         animator.Play("Idle");
+
     }
 
     private void CrouchMoving()

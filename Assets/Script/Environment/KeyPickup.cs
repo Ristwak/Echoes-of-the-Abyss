@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class KeyPickup : MonoBehaviour
 {
-    public float pickupRange = 2f; // The range within which the player can pick up the key
+    public float pickupRange = 2f;
     private Transform player;
     private bool isInRange = false;
     public bool havekey = false;
+    private bool playPickupSound = false;
+    private bool playDropSound = false;
 
-    private static KeyPickup currentKeyPickup; // Reference to the current key being held
+    private static KeyPickup currentKeyPickup; // Reference to the currently picked-up key
+    private AudioSource audioSource;
+    public AudioClip keyPickupSound;
+    public AudioClip keyDropSound;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Find player by tag
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,6 +34,7 @@ public class KeyPickup : MonoBehaviour
             {
                 DropPreviousKey(); // Drop the previous key before picking up a new one
                 PickupObject();
+                PlaySound();
             }
         }
     }
@@ -35,6 +42,7 @@ public class KeyPickup : MonoBehaviour
     void PickupObject()
     {
         havekey = true;
+        playPickupSound = true;
 
         // Update the reference in PlayerInteractions
         PlayerInteractions playerInteractions = player.GetComponent<PlayerInteractions>();
@@ -45,6 +53,7 @@ public class KeyPickup : MonoBehaviour
 
         // Store the currently picked-up key
         currentKeyPickup = this;
+        Debug.Log("Playing key pickup sound");
 
         // Deactivate the key object (Simulating picking up)
         gameObject.SetActive(false);
@@ -55,11 +64,27 @@ public class KeyPickup : MonoBehaviour
         if (currentKeyPickup != null)
         {
             // Reactivate the previous key at player's position
+            playDropSound = true;
             currentKeyPickup.transform.position = player.position; // Drops key in front of player
+            Debug.Log("Playing key drop sound");
+            
             currentKeyPickup.gameObject.SetActive(true);
 
             // Reset havekey for the dropped key
             currentKeyPickup.havekey = false;
+        }
+    }
+
+    void PlaySound()
+    {
+        if(playPickupSound)
+        {
+            AudioSource.PlayClipAtPoint(keyPickupSound, Camera.main.transform.position);
+        }
+        if(playDropSound)
+        {
+            AudioSource.PlayClipAtPoint(keyDropSound, Camera.main.transform.position);
+            // audioSource.PlayOneShot(keyDropSound);
         }
     }
 }
