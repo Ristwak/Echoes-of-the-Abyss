@@ -20,21 +20,27 @@ public class PlayerInput : MonoBehaviour
     public float standingHeight = 1.6f; // Normal standing height
     public float crouchingHeight = 1.0f; // Height when crouched
     public float cameraTransitionSpeed = 5f; // Speed of transition
+    public AudioClip walkingSounds;
+    public AudioClip sprintSounds;
 
     private CharacterController characterController;
     private Animator animator;
     private Vector2 inputVector;
     private Vector3 velocity;
-    private bool isJumping = false;
+    public bool isJumping = false;
     private bool canMove = false;
     private bool isWakingUp = false;
+    private AudioSource audioSource;
     public bool isGrounded;
     public bool isCrouched;
+    private Coroutine walkingSoundCoroutine;
+
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         isCrouched = false;
     }
 
@@ -84,6 +90,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isCrouched)
         {
+            Debug.Log("inside SPACE Jumping");
             Jump();
         }
 
@@ -96,6 +103,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Jump()
     {
+        Debug.Log("Inside Jump function");
         velocity.y = jumpForce;
         isJumping = true;
     }
@@ -105,10 +113,13 @@ public class PlayerInput : MonoBehaviour
         isGrounded = true;
         if (inputVector == Vector2.zero)
         {
+            StopWalkingSound();
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 animator.Play("Idle");
             return;
         }
+
+        PlayWalkingSound(); // Start playing sound when moving
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
         Vector3 forward = Camera.main.transform.forward;
@@ -171,10 +182,13 @@ public class PlayerInput : MonoBehaviour
     {
         if (inputVector == Vector2.zero)
         {
+            StopWalkingSound();
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle Crouching"))
                 animator.Play("Idle Crouching");
             return;
         }
+
+        PlayWalkingSound(); // Start playing sound when moving
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
         Vector3 forward = Camera.main.transform.forward;
@@ -212,6 +226,42 @@ public class PlayerInput : MonoBehaviour
         characterController.Move(desiredMoveDirection * moveSpeed * Time.deltaTime);
     }
 
+    private void PlayWalkingSound()
+    {
+        if (walkingSoundCoroutine == null)
+        {
+            walkingSoundCoroutine = StartCoroutine(LoopWalkingSound());
+        }
+
+        audioSource.volume = isCrouched ? 0.5f : 1f;
+    }
+
+    private void StopWalkingSound()
+    {
+        if (walkingSoundCoroutine != null)
+        {
+            StopCoroutine(walkingSoundCoroutine);
+            walkingSoundCoroutine = null;
+            audioSource.Stop();
+        }
+    }
+
+
+    private IEnumerator LoopWalkingSound()
+    {
+        while (inputVector != Vector2.zero && isGrounded) // Keep playing while moving
+        {
+            audioSource.clip = walkingSounds;
+            audioSource.Play();
+            yield return new WaitForSeconds(audioSource.clip.length);
+        }
+
+        walkingSoundCoroutine = null; // Reset coroutine reference
+    }
+
+
+
+
 
     private void CheckGrounded()
     {
@@ -225,14 +275,24 @@ public class PlayerInput : MonoBehaviour
 
     private void ApplyGravity()
     {
-        isGrounded = characterController.isGrounded;
-
-        if (isGrounded && velocity.y < 0)
+        if (characterController.isGrounded)
         {
-            velocity.y = -2f; // Keep player grounded
+            if (!isJumping)
+            {
+                velocity.y = -2f; // Small downward force to keep grounded
+            }
+            else
+            {
+                velocity.y = jumpForce; // Apply jump force
+                isJumping = false; // Reset jumping state after applying jump force
+            }
+        }
+        else
+        {
+            velocity.y -= gravity * Time.deltaTime; // Apply gravity while airborne
         }
 
-        velocity.y -= gravity * Time.deltaTime; // Apply gravity
         characterController.Move(velocity * Time.deltaTime);
     }
+
 }
