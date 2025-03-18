@@ -21,6 +21,7 @@ TagManager:
   - Key4
   - NoKeyDoor
   - MorgueBox
+  - TableDrawer
   layers:
   - Default
   - TransparentFX

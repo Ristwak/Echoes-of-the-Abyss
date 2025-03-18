@@ -149,7 +149,7 @@ public class PlayerInteractions : MonoBehaviour
             almirah = hit.transform.GetComponent<Almirah>();
             if (almirah != null)
             {
-                if (hit.collider.CompareTag("Almirah"))
+                if (hit.collider.CompareTag("TableDrawer"))
                 {
                     Debug.Log("Almirah play animation from nokeythings");
                     almirah.doorHandler();

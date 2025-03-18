@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     [Header("Variables")]
     public float speed = 5f;
+    public float sprintSpeed = 15f;
     public float sideMovementSpeed = 0.6f;
     public float backMovementSpeed = 0.5f;
     public float crouchedMovementSpeed = 0.5f;
@@ -21,7 +22,6 @@ public class PlayerInput : MonoBehaviour
     public float crouchingHeight = 1.0f; // Height when crouched
     public float cameraTransitionSpeed = 5f; // Speed of transition
     public AudioClip walkingSounds;
-    public AudioClip sprintSounds;
 
     private CharacterController characterController;
     private Animator animator;
