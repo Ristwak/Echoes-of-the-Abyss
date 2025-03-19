@@ -22,6 +22,7 @@ TagManager:
   - NoKeyDoor
   - MorgueBox
   - TableDrawer
+  - Fridge
   layers:
   - Default
   - TransparentFX
