@@ -30,6 +30,7 @@ public class PlayerInput : MonoBehaviour
     public bool isJumping = false;
     private bool canMove = false;
     private bool isWakingUp = false;
+    public bool isWalking = false;
     private AudioSource audioSource;
     public bool isGrounded;
     public bool isCrouched;
@@ -113,6 +114,7 @@ public class PlayerInput : MonoBehaviour
         isGrounded = true;
         if (inputVector == Vector2.zero)
         {
+            isWalking = false;
             StopWalkingSound();
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 animator.Play("Idle");
@@ -136,24 +138,28 @@ public class PlayerInput : MonoBehaviour
 
         if (inputVector.y < 0)
         {
+            isWalking = true;
             moveSpeed = backMovementSpeed;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walking Backwards"))
                 animator.Play("Walking Backwards");
         }
         else if (inputVector.x > 0)
         {
+            isWalking = true;
             moveSpeed = sideMovementSpeed;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Right Walk"))
                 animator.Play("Right Walk");
         }
         else if (inputVector.x < 0)
         {
+            isWalking = true;
             moveSpeed = sideMovementSpeed;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Left Walk"))
                 animator.Play("Left Walk");
         }
         else
         {
+            isWalking = true;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walking"))
                 animator.Play("Walking");
         }
@@ -182,6 +188,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (inputVector == Vector2.zero)
         {
+            isWalking = false;
             StopWalkingSound();
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle Crouching"))
                 animator.Play("Idle Crouching");
@@ -204,21 +211,25 @@ public class PlayerInput : MonoBehaviour
 
         if (inputVector.y < 0)
         {
+            isWalking = true;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking Backwards"))
                 animator.Play("Crouched Walking Backwards");
         }
         else if (inputVector.x > 0)
         {
+            isWalking = true;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking Right"))
                 animator.Play("Crouched Walking Right");
         }
         else if (inputVector.x < 0)
         {
+            isWalking = true;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking Left"))
                 animator.Play("Crouched Walking Left");
         }
         else
         {
+            isWalking = true;
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Crouched Walking"))
                 animator.Play("Crouched Walking");
         }
@@ -241,6 +252,7 @@ public class PlayerInput : MonoBehaviour
         if (walkingSoundCoroutine != null)
         {
             StopCoroutine(walkingSoundCoroutine);
+            isWalking = false;
             walkingSoundCoroutine = null;
             audioSource.Stop();
         }
