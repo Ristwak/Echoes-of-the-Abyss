@@ -146,7 +146,7 @@ public class PlayerInteractions : MonoBehaviour
 
         if (frontline)
         {
-            almirah = hit.transform.GetComponent<Almirah>();
+            almirah = hit.transform.GetComponentInParent<Almirah>();
             if (almirah != null)
             {
                 if (hit.collider.CompareTag("TableDrawer"))
@@ -154,6 +154,10 @@ public class PlayerInteractions : MonoBehaviour
                     Debug.Log("Almirah play animation from nokeythings");
                     almirah.doorHandler();
                 }
+            }
+            else
+            {
+                Debug.LogWarning("Almirah component NOT found on: " + hit.collider.gameObject.name);
             }
         }
     }
