@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2f8906b748ea1da4090b76b5500921a2
+timeCreated: 1493288146
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 89246
+  packageName: Tinned Food
+  packageVersion: 1.1
+  assetPath: Assets/DigitalKonstrukt/Can/Resources/Materials/Can_Material_PeaStew.mat
+  uploadId: 182201

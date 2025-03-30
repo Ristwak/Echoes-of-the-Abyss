@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 64905cc01446df24a99b2d11a1b8c559
+timeCreated: 1493288146
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 89246
+  packageName: Tinned Food
+  packageVersion: 1.1
+  assetPath: Assets/DigitalKonstrukt/Can/Resources/Materials/Can_Material_TomatoSoup.mat
+  uploadId: 182201

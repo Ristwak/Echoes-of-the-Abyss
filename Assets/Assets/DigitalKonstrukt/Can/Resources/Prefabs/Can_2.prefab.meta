@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7b7ed779076a711439b117150f31a519
+timeCreated: 1493290150
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 89246
+  packageName: Tinned Food
+  packageVersion: 1.1
+  assetPath: Assets/DigitalKonstrukt/Can/Resources/Prefabs/Can_2.prefab
+  uploadId: 182201
