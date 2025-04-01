@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: db33c6ac972d868438f0b2f120cd9846
+timeCreated: 1518192342
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 183066
+  packageName: Mia Lock - Bikini
+  packageVersion: 1.0
+  assetPath: Assets/Mia Bikini/meshes/materials/Eyesserah.mat
+  uploadId: 401993
