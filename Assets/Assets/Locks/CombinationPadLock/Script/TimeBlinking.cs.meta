@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 62fca76a776901541be158f954828dc5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225067
+  packageName: Padlock with password
+  packageVersion: 1.0
+  assetPath: Assets/CombinationPadLock/Script/TimeBlinking.cs
+  uploadId: 507016

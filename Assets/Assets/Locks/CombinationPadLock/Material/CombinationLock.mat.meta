@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aec8ac6dd85f9274d83b2f7df8db3675
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225067
+  packageName: Padlock with password
+  packageVersion: 1.0
+  assetPath: Assets/CombinationPadLock/Material/CombinationLock.mat
+  uploadId: 507016

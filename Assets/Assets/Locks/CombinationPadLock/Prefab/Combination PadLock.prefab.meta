@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 852a11fecc1877149be52139ea40a3be
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225067
+  packageName: Padlock with password
+  packageVersion: 1.0
+  assetPath: Assets/CombinationPadLock/Prefab/Combination PadLock.prefab
+  uploadId: 507016

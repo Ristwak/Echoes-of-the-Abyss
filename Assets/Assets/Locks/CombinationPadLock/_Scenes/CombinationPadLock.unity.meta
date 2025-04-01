@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f536f7197e9836b41a52ec532fce3192
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225067
+  packageName: Padlock with password
+  packageVersion: 1.0
+  assetPath: Assets/CombinationPadLock/_Scenes/CombinationPadLock.unity
+  uploadId: 507016

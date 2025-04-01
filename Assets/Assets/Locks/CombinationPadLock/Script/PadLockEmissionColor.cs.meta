@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f0bf50ab0d5cc8148bdeac01c0bdda83
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225067
+  packageName: Padlock with password
+  packageVersion: 1.0
+  assetPath: Assets/CombinationPadLock/Script/PadLockEmissionColor.cs
+  uploadId: 507016

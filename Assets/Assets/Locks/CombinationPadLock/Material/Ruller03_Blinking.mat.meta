@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f0a91a7acf3f57546b4d237e46f8f6c9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 225067
+  packageName: Padlock with password
+  packageVersion: 1.0
+  assetPath: Assets/CombinationPadLock/Material/Ruller03_Blinking.mat
+  uploadId: 507016

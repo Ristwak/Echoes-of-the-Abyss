@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b22e3d54b9d644efa9ba4bf9bf651a44
+timeCreated: 1462782021
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62942
+  packageName: Keypad
+  packageVersion: 1.0
+  assetPath: Assets/Keypad/Demo.unity
+  uploadId: 119247
