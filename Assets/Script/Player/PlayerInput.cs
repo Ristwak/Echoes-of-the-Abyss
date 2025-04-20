@@ -14,26 +14,28 @@ public class PlayerInput : MonoBehaviour
     public float gravity = 9.81f;
     public float groundDistance = 0.9f;
     public bool IsCrouching { get; private set; } = false;
+
+    [Header("Booleans")]
+    public bool isJumping = false;
+    public bool isWalking = false;
+    public bool isGrounded;
+    public bool isCrouched;
+
+    [Header("References")]
     public GameObject playerHead;
     public GameObject playerTorso;
     public GameObject playerUnderHalfBody;
     public Camera mainCamera;
-    public float standingHeight = 1.6f; // Normal standing height
-    public float crouchingHeight = 1.0f; // Height when crouched
-    public float cameraTransitionSpeed = 5f; // Speed of transition
     public AudioClip walkingSounds;
 
+    [Header("Privates")]
     private CharacterController characterController;
     private Animator animator;
     private Vector2 inputVector;
     private Vector3 velocity;
-    public bool isJumping = false;
     private bool canMove = false;
     private bool isWakingUp = false;
-    public bool isWalking = false;
     private AudioSource audioSource;
-    public bool isGrounded;
-    public bool isCrouched;
     private Coroutine walkingSoundCoroutine;
 
 

@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    [Header("References")]
     public Transform player;
     public Transform cameraPoint;
+
+    [Header("Camera Variables")]
     public float mouseSensitivity = 100f;
     public float maxLookUpAngle = 60f;
     public float maxLookDownAngle = -45f;
     public Vector3 cameraOffset = new Vector3(0f, 1.5f, -3f);
-
     private float xRotation = 0f;
     private float yRotation = 0f;
+
     private bool canControl = false; // Prevent player control initially
 
     void Awake()

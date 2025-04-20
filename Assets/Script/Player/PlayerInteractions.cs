@@ -5,8 +5,6 @@ public class PlayerInteractions : MonoBehaviour
     [Header("Variables")]
     public float frontDistance = 2.0f;
     public float frontlinetoOpenDoor = 1.5f;
-    public Transform raycastOrigin;
-    public GameObject raycastPoint;
 
     private MorgueBox morgueBox;
     private Almirah almirah;
@@ -14,9 +12,12 @@ public class PlayerInteractions : MonoBehaviour
     private DualDoor dualDoor;
     private Rigidbody rb;
     private Animator animator;
-
-    public KeyPickup keyPickup;
     private bool frontline;
+
+    [Header("References")]
+    public Transform raycastOrigin;
+    public GameObject raycastPoint;
+    public KeyPickup keyPickup;
 
     void Awake()
     {
