@@ -1,0 +1,870 @@
+fileFormatVersion: 2
+guid: 81cda3d3612feab4091f8f02c3ccedac
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_01
+    second: {fileID: 2100000, guid: 5a4df656bc319ba4c98b8c2eadec0561, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_01Mat
+    second: {fileID: 2100000, guid: ca772929725ac9c4d99c793d1c9355fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_02
+    second: {fileID: 2100000, guid: cd867ceee77143f46b9a222f72313ca4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_02Mat
+    second: {fileID: 2100000, guid: 7f87e8c54355b8045a897a9a978c6917, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_03
+    second: {fileID: 2100000, guid: 3a7dab4e296d98b47a714c727020b72c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_03Mat
+    second: {fileID: 2100000, guid: 4251d2d6adbea60448d6f38f6f6f6267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_04
+    second: {fileID: 2100000, guid: 260fb8c7fe6c8d8478b10d92926dce08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_04Mat
+    second: {fileID: 2100000, guid: f4a5e826bda349c4c943fe3588aa21b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_05
+    second: {fileID: 2100000, guid: c1aed0b170a433f4e9042d6d6964354a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_05Mat
+    second: {fileID: 2100000, guid: 25b2d683e3ed4d546baa1c48992d8488, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_06
+    second: {fileID: 2100000, guid: e7d3cfe4e7ceb0a41be6c82ae8613be6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_06Mat
+    second: {fileID: 2100000, guid: ebfcc48bb48655d48bde73aa216615cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_07
+    second: {fileID: 2100000, guid: 5db4da65e0580224a80258e9372654b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_07Mat
+    second: {fileID: 2100000, guid: 794dbc531e085e3479a7749ef41ef090, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_08
+    second: {fileID: 2100000, guid: 4b0746e468f03ee45b25dcd39db8f4a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_08Mat
+    second: {fileID: 2100000, guid: 594f315189c660c4588a90671a1c43f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_09
+    second: {fileID: 2100000, guid: badb02629c693c74bbda3600ff38cc6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_09Mat
+    second: {fileID: 2100000, guid: be35e260fb53d0945b23c33b65fd5857, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_10
+    second: {fileID: 2100000, guid: a294164dee8344848ab1386052736290, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_100Mat
+    second: {fileID: 2100000, guid: 4b021e297ecd84e4d92903b15f31f511, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_101Mat
+    second: {fileID: 2100000, guid: 1c2377072dc6ded479652b4399bf2d2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_102Mat
+    second: {fileID: 2100000, guid: d2b4d94c422bcbe4f96325cbeb9c9c79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_103Mat
+    second: {fileID: 2100000, guid: cb209a3e71e48e7449ebd530fef4afe4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_104Mat
+    second: {fileID: 2100000, guid: 9168b394c1827d74082543a32eb6ea20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_105Mat
+    second: {fileID: 2100000, guid: f53e1d62f90568a4b80715e41ee2c2ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_106Mat
+    second: {fileID: 2100000, guid: 94780c7849004c646bada3d3970f7481, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_107Mat
+    second: {fileID: 2100000, guid: ea2cd67376cc276489f7a527fe221502, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_108Mat
+    second: {fileID: 2100000, guid: 78c9d85ab6c44364aa40df96acdde779, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_109Mat
+    second: {fileID: 2100000, guid: 20140807d2b547e4897297bfd1727130, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_10Mat
+    second: {fileID: 2100000, guid: bacdf76d183d02c4c80fdcedf3ca9138, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_11
+    second: {fileID: 2100000, guid: dfbd735afd1b2c14d96643a774206e95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_110Mat
+    second: {fileID: 2100000, guid: 6fd1e4c351f1e5b48ae28215e9014fe8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_111Mat
+    second: {fileID: 2100000, guid: ac96c216f413f7e46865ab90b34ee8e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_112Mat
+    second: {fileID: 2100000, guid: 644afa1e5e4487f46a5d5eac59372908, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_113Mat
+    second: {fileID: 2100000, guid: efba7f1d289746947967bc61931187d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_114Mat
+    second: {fileID: 2100000, guid: 3dbd68df3d1107d4c9ebec21b982c17e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_115Mat
+    second: {fileID: 2100000, guid: 62cf061b5e80fca438f25d3bf52a0222, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_116Mat
+    second: {fileID: 2100000, guid: 1579a7c63dab40340b8c33e3e7dd31c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_117Mat
+    second: {fileID: 2100000, guid: a36c4c3f0b1427c4a87ad78daae125f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_118Mat
+    second: {fileID: 2100000, guid: cf2c0fbcbe5e806469209243b9139b8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_119Mat
+    second: {fileID: 2100000, guid: 119c631ca863e4641875e19297eb2267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_11Mat
+    second: {fileID: 2100000, guid: 78271c7765f42164a99818573e8f3c5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_120Mat
+    second: {fileID: 2100000, guid: cd7e273877834aa4abad5702be8ed93a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_121Mat
+    second: {fileID: 2100000, guid: 62fe9ab8eb24ab14f9120c2592bb9d1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_122Mat
+    second: {fileID: 2100000, guid: c204d39d762956643b1bae09c446cdaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_123Mat
+    second: {fileID: 2100000, guid: c6911c5dbb3a7654095503c4ee37f4b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_124Mat
+    second: {fileID: 2100000, guid: 7607710ddceee62429a0859e6b75abac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_125Mat
+    second: {fileID: 2100000, guid: 586544b99b009a64ea0c3a44a6cb5308, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_126Mat
+    second: {fileID: 2100000, guid: baa88507eea35c14ba1f68685e775d4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_127Mat
+    second: {fileID: 2100000, guid: 2b5773ad99ea3174ba99181094eecea8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_128Mat
+    second: {fileID: 2100000, guid: 8bbff7e0744c2aa4a81d0c03fa55ec51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_129Mat
+    second: {fileID: 2100000, guid: b776128367f1a0f4ab35d4d045204bc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_12Mat
+    second: {fileID: 2100000, guid: 9e5a81ff7b8f1504a88050c0eb3373a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_13
+    second: {fileID: 2100000, guid: 9b62f45ac72e9db459d1b14e40529483, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_130Mat
+    second: {fileID: 2100000, guid: d13be36301aef1148a3e516176babf94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_131Mat
+    second: {fileID: 2100000, guid: 7eccd3a82f105c44d9fdf0f909705289, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_132Mat
+    second: {fileID: 2100000, guid: 67c107a48a37829429774c784a84828f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_133Mat
+    second: {fileID: 2100000, guid: 655eb918af17cf5449f165c5843bd385, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_134Mat
+    second: {fileID: 2100000, guid: c57a06b7f7953de40a9ee6b579166a2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_135Mat
+    second: {fileID: 2100000, guid: c80b0507b7f2af2469a32299e37981d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_136Mat
+    second: {fileID: 2100000, guid: 325ae5afc072a594382d4570d32ac9b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_13Mat
+    second: {fileID: 2100000, guid: 071110ac24ced1147987c5f611ab5d8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_14Mat
+    second: {fileID: 2100000, guid: 44f1ff0d596316343989f938a07dd64d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_15
+    second: {fileID: 2100000, guid: c88c7bf4a2807974eaffcaf73f254870, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_15Mat
+    second: {fileID: 2100000, guid: a6c8aafe80c7083459d8d1e3951425c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_16Mat
+    second: {fileID: 2100000, guid: 70c92f9065daf784eb76ad2741b900ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_17Mat
+    second: {fileID: 2100000, guid: b8f96f6333a83ca4994b98d6d03e04eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_18Mat
+    second: {fileID: 2100000, guid: bc55fc1bc7bba6e4fb5f897b05435880, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_19Mat
+    second: {fileID: 2100000, guid: b72a26523c47bcf40b0295f3eaf7a02b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_20Mat
+    second: {fileID: 2100000, guid: 87274848e828bc245bdc6d1eb3f0c133, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_21Mat
+    second: {fileID: 2100000, guid: 4f3cdc91840544440b582490cb026140, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_22Mat
+    second: {fileID: 2100000, guid: 620550de529748a4f90f2a93fc208135, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_23Mat
+    second: {fileID: 2100000, guid: caa39fa4c92ce4047aaffc7617e23292, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_24Mat
+    second: {fileID: 2100000, guid: ef0421b52c6b60f438ce2d0f42820c8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_25Mat
+    second: {fileID: 2100000, guid: 2e417f7f13a7eac468e3d08feb0887e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_26Mat
+    second: {fileID: 2100000, guid: 35bdc7ba4e396a14ba9427b03a2e48ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_27Mat
+    second: {fileID: 2100000, guid: 1b76673fce5f5fb4b958a59aaef3eaf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_28Mat
+    second: {fileID: 2100000, guid: 8611ee7a7b9f0e3448c414cd282e06f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_29Mat
+    second: {fileID: 2100000, guid: e16418f4a3c0bdd4fb7f3d155186f019, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_30Mat
+    second: {fileID: 2100000, guid: e652e165cfc4a46439b85a89b1cc4192, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_31Mat
+    second: {fileID: 2100000, guid: b7ce1dbf7b1f3cd4ab29d665f0609f25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_32Mat
+    second: {fileID: 2100000, guid: 8253a6c4ec1d6ee499ea915aeb6a4148, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_33Mat
+    second: {fileID: 2100000, guid: 934798035b485d749878c598aa220d5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_34Mat
+    second: {fileID: 2100000, guid: 5108abcc1f2f15f469bb714fa01b0525, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_35Mat
+    second: {fileID: 2100000, guid: e729af3c8861a12478ab82c8c6838d63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_36Mat
+    second: {fileID: 2100000, guid: e8fa29d112342764abd19fe3e98449af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_37Mat
+    second: {fileID: 2100000, guid: a209b9ceca8871549812033df0dd6080, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_38Mat
+    second: {fileID: 2100000, guid: 744005c8bd5ac5f4e8a310ccf6ca5639, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_39Mat
+    second: {fileID: 2100000, guid: 03f69adad0c84b646a81d92e176b26cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_40Mat
+    second: {fileID: 2100000, guid: f45bca7b3a665e4418d8db94d9eabae6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_41Mat
+    second: {fileID: 2100000, guid: 0165aa81ab8339c419ee5adff2f53b44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_42Mat
+    second: {fileID: 2100000, guid: 6379eae4ee37e054bba75034a2e7d7af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_43Mat
+    second: {fileID: 2100000, guid: 25b70a64b5dc8424896b5bc670dad0df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_44Mat
+    second: {fileID: 2100000, guid: 8271dbd2d2a24b447a3f9aa150bd47d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_45Mat
+    second: {fileID: 2100000, guid: 00aa5ce6e94c1d4469eb36f9ab8fb4cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_46Mat
+    second: {fileID: 2100000, guid: dab5c31d2d4a7484b9ef0fed1960ca77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_47Mat
+    second: {fileID: 2100000, guid: 240790c658c35a4478b64c397f64c427, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_48Mat
+    second: {fileID: 2100000, guid: cbd63b25e171f754cba7aba64b2b9359, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_49Mat
+    second: {fileID: 2100000, guid: f2a036fedb48cb04c8b1366e2135d3ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_50Mat
+    second: {fileID: 2100000, guid: b32d7cd1f2c8ed84083ccd4e391837d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_51Mat
+    second: {fileID: 2100000, guid: bf48d23132d0e2140bf43e54355ae6fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_52Mat
+    second: {fileID: 2100000, guid: 1a03033b8c0567b4ead5a87c871818a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_53Mat
+    second: {fileID: 2100000, guid: e18dca2829322c24ab995b2fb768696b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_54Mat
+    second: {fileID: 2100000, guid: e0738906348a47243a67e5b520a96c33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_55Mat
+    second: {fileID: 2100000, guid: 072936d28fb9a2e439b75191973f672d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_56Mat
+    second: {fileID: 2100000, guid: f3e0200d60bb2934aaab076468582247, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_57Mat
+    second: {fileID: 2100000, guid: 9327872b0c76d2b4ba220b9f36204cd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_58Mat
+    second: {fileID: 2100000, guid: a202859e7094d9d42bed4227efed97da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_59Mat
+    second: {fileID: 2100000, guid: 3e118b7df3b67224c94c3aceb2e92a69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_60Mat
+    second: {fileID: 2100000, guid: f387085ad6d186c47a9617db1463fb12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_61Mat
+    second: {fileID: 2100000, guid: 9b057d3cd8374fa4fa526714c7b01651, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_62Mat
+    second: {fileID: 2100000, guid: 847efd41409c0cc4ab6007861a3d497d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_63Mat
+    second: {fileID: 2100000, guid: a6bf3ce3052a6364e99b187c2e34d9e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_64Mat
+    second: {fileID: 2100000, guid: 3d02d07199d00c645870c1d08cd0bdd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_65Mat
+    second: {fileID: 2100000, guid: 8e85e3c3dd6b1134391cf941ff6b6b80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_66Mat
+    second: {fileID: 2100000, guid: 4f5563fd77b9f2f46bcc5043e99c60fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_67Mat
+    second: {fileID: 2100000, guid: 4869b087f10a96e4fa961bf1e292f0dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_68Mat
+    second: {fileID: 2100000, guid: 685a52ed138b65048be1e4ee9205502f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_69Mat
+    second: {fileID: 2100000, guid: 2963dad0335dd524f9b9c0721a7796e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_70Mat
+    second: {fileID: 2100000, guid: 074d5dae06f3d9a40b7a43f8f3896fe8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_71Mat
+    second: {fileID: 2100000, guid: cc3b4e614078fc1479df4441c975114b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_72Mat
+    second: {fileID: 2100000, guid: bae8cde5b1b385341a6df297c4485207, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_73Mat
+    second: {fileID: 2100000, guid: 576cebfb0dd969247b89f9fab2069775, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_74Mat
+    second: {fileID: 2100000, guid: 19e3146d5202aae42a69b7061ea33273, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_75Mat
+    second: {fileID: 2100000, guid: 8b1d00298ca1ea54dbcfb41a9ee2e3b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_76Mat
+    second: {fileID: 2100000, guid: 1f552333034e28b44b53a8e3d9214f8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_77Mat
+    second: {fileID: 2100000, guid: d285649ccba4d6e4b8acf534bf6c6e40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_78Mat
+    second: {fileID: 2100000, guid: a333ac22613d61f48b0dee0c5174b174, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_79Mat
+    second: {fileID: 2100000, guid: 2303519045386bf41886df001337eadd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_80Mat
+    second: {fileID: 2100000, guid: a9770e216979e124fb59dac3ebcb8218, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_81Mat
+    second: {fileID: 2100000, guid: d64c85ee8cad48747b22ac9e45dc77e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_82Mat
+    second: {fileID: 2100000, guid: bbe463d19728bcf45a32610debefa6cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_83Mat
+    second: {fileID: 2100000, guid: e92d00baf4ee82d48a29fb538c5a0f3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_84Mat
+    second: {fileID: 2100000, guid: a9387b9b7cce48e4a85a57c91c375ea0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_85Mat
+    second: {fileID: 2100000, guid: 41c6eb97b263b414087db326486ae1cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_86Mat
+    second: {fileID: 2100000, guid: 7039d78ce66e00d4d8641924bb29b9ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_87Mat
+    second: {fileID: 2100000, guid: 3968df127da42d249b064d638ab85399, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_88Mat
+    second: {fileID: 2100000, guid: b8ef54ca5d6d5db41b055268ba8713d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_89Mat
+    second: {fileID: 2100000, guid: 1b0670349d23c7b42a41aed1eb9ff3d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_90Mat
+    second: {fileID: 2100000, guid: cc880116a4ddde7419f194623de78ba4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_91Mat
+    second: {fileID: 2100000, guid: fee06b4b840f262419a6e4333b6a3916, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_92Mat
+    second: {fileID: 2100000, guid: e3502abe801ca3e4b971c337404bfa83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_93Mat
+    second: {fileID: 2100000, guid: 5e187e3975e36584fa5a7694514e3415, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_94Mat
+    second: {fileID: 2100000, guid: 05eb3bf7f156827489b2379e18ffd578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_95Mat
+    second: {fileID: 2100000, guid: 089afd11a18c2ed4896718df907d59ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_96Mat
+    second: {fileID: 2100000, guid: 3d7d47b17b2c270459b1138aed0bce34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_97Mat
+    second: {fileID: 2100000, guid: afafc6775e0c8674284720d4dc9210ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_98Mat
+    second: {fileID: 2100000, guid: de14e8b89d8879c4f830b1a982add7fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Archmodels70_020_99Mat
+    second: {fileID: 2100000, guid: 4d30731b0333e3147a1ed7da2f27975b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material__63
+    second: {fileID: 2100000, guid: 827e269a4b1d30345b93c181e079c7c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material__70
+    second: {fileID: 2100000, guid: 5d73e1048f7deb5438ea4fb3a4854e2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Standard_12
+    second: {fileID: 2100000, guid: 5b90ee94432380540805df4270a2fbc2, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
