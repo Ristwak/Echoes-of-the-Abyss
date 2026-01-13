@@ -53,6 +53,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 1
+    - _Metallic: 1
+    - _Smoothness: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.5882353}
     - _Color: {r: 1, g: 1, b: 1, a: 0.5882353}
