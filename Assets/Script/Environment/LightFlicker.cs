@@ -3,8 +3,8 @@ using UnityEngine;
 public class LightFlicker : MonoBehaviour
 {
     public Light[] flickeringLight;
-    public float minIntensity = 0.5f;
-    public float maxIntensity = 2f;
+    public float minIntensity = 0.6f;
+    public float maxIntensity = 1f;
     public float flickerSpeed = 0.1f;
 
     void Start()

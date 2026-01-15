@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 8569434119721729535}
   - component: {fileID: 5896980990107896533}
   - component: {fileID: 1807094354708406181}
+  - component: {fileID: 694469679170038635}
   m_Layer: 0
   m_Name: PatientFolder
   m_TagString: Untagged
@@ -182,6 +183,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &694469679170038635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942893902055936257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59ad8f090a636347ac7f8ac22f7f7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FilePickup
+  pickupRange: 2
+  havefile: 0
+  filePickupSound: {fileID: 0}
+  fileDropSound: {fileID: 0}
+  fileMaterial: {fileID: 0}
+  fileInHand: {fileID: 0}
 --- !u!1 &8360508733940786039
 GameObject:
   m_ObjectHideFlags: 0
