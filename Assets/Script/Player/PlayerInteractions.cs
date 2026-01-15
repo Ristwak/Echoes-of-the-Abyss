@@ -112,7 +112,7 @@ public class PlayerInteractions : MonoBehaviour
                     if (frontline)
                     {
                               dualDoor = hit.transform.parent.GetComponent<DualDoor>();
-                              Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
+                              Debug.Log("Raycast hit: " + dualDoor);
                               if (dualDoor == null)
                               {
                                         Debug.LogWarning("MetallicDoor component NOT found on: " + hit.collider.gameObject.name);
@@ -121,7 +121,7 @@ public class PlayerInteractions : MonoBehaviour
 
                               if (dualDoor != null)
                               {
-                                        if (hit.collider.transform.parent.CompareTag("Almirah"))
+                                        if (hit.collider.transform.parent.CompareTag("Almirah") || hit.collider.transform.parent.CompareTag("NoKeyLongDoor"))
                                         {
                                                   PlayAnim(hit);
                                         }

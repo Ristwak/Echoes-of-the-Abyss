@@ -26517,9 +26517,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4929757647025985}
+  - component: {fileID: 4929757647025986}
   m_Layer: 0
   m_Name: DoorD_V2 (2)
-  m_TagString: Untagged
+  m_TagString: NoKeyLongDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -30027,10 +30028,10 @@ GameObject:
   - component: {fileID: 64287581655993247}
   m_Layer: 0
   m_Name: DoorD_V2_Window2
-  m_TagString: Untagged
+  m_TagString: NoKeyLongDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1664321495765837
 GameObject:
@@ -30534,10 +30535,10 @@ GameObject:
   - component: {fileID: 64722134305259567}
   m_Layer: 0
   m_Name: DoorD_V2_Window
-  m_TagString: Untagged
+  m_TagString: NoKeyLongDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1722248691272025
 GameObject:
@@ -31440,12 +31441,13 @@ GameObject:
   - component: {fileID: 33530414366299055}
   - component: {fileID: 23924157104585435}
   - component: {fileID: 64935058386283839}
+  - component: {fileID: 64935058386283840}
   m_Layer: 0
   m_Name: DoorD_V2_Right
-  m_TagString: Untagged
+  m_TagString: RightDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1782282939446645
 GameObject:
@@ -32392,7 +32394,7 @@ GameObject:
   - component: {fileID: 64060064996430467}
   m_Layer: 0
   m_Name: DoorD_V2_Frame
-  m_TagString: Untagged
+  m_TagString: NoKeyLongDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -33392,12 +33394,13 @@ GameObject:
   - component: {fileID: 33726992030221159}
   - component: {fileID: 23052069698583413}
   - component: {fileID: 64743580677245567}
+  - component: {fileID: 64743580677245568}
   m_Layer: 0
   m_Name: DoorD_V2_Left
-  m_TagString: Untagged
+  m_TagString: LeftDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1979298978216359
 GameObject:
@@ -39590,7 +39593,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: -1, z: -1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4920071937214665}
   m_Father: {fileID: 4929757647025985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4533685670119605
@@ -42247,12 +42251,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664304061680251}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4929757647025985}
+  m_Father: {fileID: 4891375680945947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4693707986702231
 Transform:
@@ -45017,7 +45021,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4688750382975445}
   m_Father: {fileID: 4929757647025985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4892283168559067
@@ -45340,12 +45345,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719405069034095}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: -0.00000005364446}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: -1, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4929757647025985}
+  m_Father: {fileID: 4533522607798841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921844071432007
 Transform:
@@ -45427,10 +45432,22 @@ Transform:
   - {fileID: 4319747225149649}
   - {fileID: 4533522607798841}
   - {fileID: 4891375680945947}
-  - {fileID: 4920071937214665}
-  - {fileID: 4688750382975445}
   m_Father: {fileID: 818523118}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &4929757647025986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517400247589665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f03dc503bd2d844ac612402bbcd617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DualDoor
+  leftDoorAnimator: {fileID: 64743580677245568}
+  rightDoorAnimator: {fileID: 64935058386283840}
 --- !u!4 &4933624099422769
 Transform:
   m_ObjectHideFlags: 0
@@ -95143,6 +95160,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: cc8dc8258c356a14b9bf02775a033c9a, type: 3}
+--- !u!95 &64743580677245568
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976796093699249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 692df5018c21e6f4dbff7182bf9c6ad9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &64743587073123576
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -98443,6 +98482,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: cc8dc8258c356a14b9bf02775a033c9a, type: 3}
+--- !u!95 &64935058386283840
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781426535049777}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c71a49667e0008242808845b97552a18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!64 &64937003118142307
 MeshCollider:
   m_ObjectHideFlags: 0
