@@ -25,6 +25,7 @@ public class PlayerInteractions : MonoBehaviour
           {
                     rb = GetComponent<Rigidbody>();
                     animator = GetComponent<Animator>();
+                    fileInHand.gameObject.SetActive(false);
           }
 
           private bool holdFilePose;
@@ -41,7 +42,7 @@ public class PlayerInteractions : MonoBehaviour
                               NoKeythings();
                     }
 
-                    if(Input.GetKey(KeyCode.T))
+                    if(Input.GetKey(KeyCode.T) && filePickup.havefile)
                     {
                         holdFilePose = true;
                     }

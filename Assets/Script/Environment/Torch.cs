@@ -8,6 +8,7 @@ public class Torch : MonoBehaviour
     private Transform player;
     private bool isInRange = false;
     public bool havetorch = false;
+    public bool lightOn = true;
 
     void Start()
     {
@@ -44,6 +45,24 @@ public class Torch : MonoBehaviour
                 playerTorch.transform.gameObject.SetActive(true);
                 havetorch = true;
             }
+
+            if(Input.GetKeyDown(KeyCode.P))
+            {
+                LightOnOff();
+            }
+        }
+    }
+
+    void LightOnOff()
+    {
+        lightOn = !lightOn;
+        if (lightOn)
+        {
+            GetComponentInChildren<Light>().enabled = true;
+        }
+        else
+        {
+            GetComponentInChildren<Light>().enabled = false;
         }
     }
 

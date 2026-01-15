@@ -22,7 +22,7 @@ public class ElectricTorchOnOff : MonoBehaviour
 	public LightChoose modoLightChoose;
 	[Space]
 	[Space]
-	public string onOffLightKey = "F";
+	public string onOffLightKey = "P";
 	private KeyCode _kCode;
 	[Space]
 	[Space]

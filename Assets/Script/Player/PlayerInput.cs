@@ -59,8 +59,6 @@ public class PlayerInput : MonoBehaviour
         animator.Play("Getting Up");
         yield return new WaitForSeconds(8f);
         playerHead.SetActive(false);
-        // playerTorso.SetActive(false);
-        // playerUnderHalfBody.SetActive(false);
         canMove = true;
     }
 
